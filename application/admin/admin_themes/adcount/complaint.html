@@ -1,0 +1,70 @@
+{extend name="base" /}
+{block name="body"}
+<style>
+    .layui-form-checkbox{
+        height: 38px;
+        line-height: 37px;
+        margin: 0;
+    }
+    .layui-form-pane .layui-form-checkbox{
+        margin:0;
+    }
+</style>
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class=""><a href="{:url('admin/adcount/detail',['id'=>$cid])}">统计详情</a></li>
+            <li class=""><a href="{:url('admin/adcount/wechat_count',['id'=>$cid])}">复制次数</a></li>
+            <li class=""><a href="{:url('admin/adcount/address_count',['id'=>$cid])}">地域统计</a></li>
+            <li class=""><a href="{:url('admin/adcount/advdata_page',['id'=>$cid])}">点击量/进线</a></li>
+            <li class="layui-this">投诉统计</li>
+            <li class=""><a href="{:url('admin/adcount/ad_code',['id'=>$cid])}">统计代码</a></li>
+        </ul>
+        <div class="layui-tab-content">
+
+            <form class="layui-form layui-form-pane" action="{:url('admin/adcount/advdata_page',['id'=>$cid])}" method="get">
+                <div class="layui-inline">
+                    <label class="layui-form-label">开始时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="start_time" value="{$start_time}" class="layui-input datetime">
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">结束时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="end_time" value="{$end_time}" class="layui-input datetime">
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <button class="layui-btn">搜索</button>
+                </div>
+            </form>
+            <hr>
+
+            <form action="" method="post" class="ajax-form">
+                <div class="layui-tab-item layui-show">
+                    <table class="layui-table">
+                        <thead>
+                        <tr>
+                            <th style="width:50%;">投诉名称</th>
+                            <th style="width:50%;">投诉次数</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {foreach name="comp_total" item="val"}
+                            <tr>
+                                <td>{$val.name}</td>
+                                <td>{$val.count}</td>
+                            </tr>
+                            {/foreach}
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{/block}

@@ -1,0 +1,109 @@
+html, body{
+	height: 100%;
+} 
+
+.contain{
+	min-height: calc(100% - 172px);
+}
+
+.content h2{
+			margin:0;
+			color: #1b1b1b;
+			font-size: 24px;
+		}
+		.content .tl-title span{
+			padding-right: 10px;
+
+		}.title h2{
+    color:#333;font-size: 25px;padding-bottom:10px;
+                 }
+.content hr{
+	margin: 15px 0 0 0;
+}       
+		.content{
+			width:100%;max-width:700px;margin:0 auto;border:#E8E8E8 solid;border-width:1px 0 1px 0;padding:10px 0;
+		}
+		.content:first{
+			
+		}
+		.content img{
+			float:left;
+		}
+		.content-char{
+			float:left;padding-left:10px;width:calc(100% - 150px);
+		}
+		.content .title{
+			height:50px;color: #000042;line-height:70px;font-weight:400;overflow: hidden;
+		}
+		.content .title h2{
+			color:#2e2e2e;font-size: 24px;text-overflow: ellipsis;width:520px;
+		}
+		.content .title a:hover{
+			text-decoration:none;
+		}
+		.content .author{
+			height:30px;padding:10px;color:#666;font-size: 18px;
+		}
+    	.content .author p{
+    		font-size: 18px;
+    	}
+
+    	.content-1{
+    		max-width: 700px;
+    		margin: 0 auto;
+    		border-bottom: 1px dashed #d9d9d9;
+    		padding: 10px 5px 5px 5px;
+    		position: relative;
+    	}
+
+    	.content-1 .con-left{
+    		padding-right: 180px;
+    	}
+
+    	.con-left .title a h2{
+			font-size: 24px;
+			line-height: 36px;
+			color: #2e2e2e;
+			padding-bottom: 10px;
+			overflow: hidden;
+			white-space:nowrap;
+			text-overflow: ellipsis;
+    	}
+
+    	.con-left .jieshao p{
+    		font-size: 18px;
+    		padding-bottom: 5px;
+            height:90px;
+            overflow: hidden;
+    		line-height: 30px;
+    		color: #707070;
+    		text-align: justify;
+    		max-height: 5.4em;
+    		overflow: hidden;
+    		text-overflow: clip;
+    		letter-spacing: 2px;
+    	}
+
+    	.con-right{
+    		width: 180px;
+    		position: absolute;
+    		right: -30px;
+    		top: 30px;
+    		padding: 15px;
+    		text-align: center;
+    	}
+
+    	.con-right img{
+    		border-radius: 5px;
+            margin-top:-5px;
+    	}
+
+    	.con-foot{
+    		padding-top: 20px;
+    	}
+		
+		
+    	.con-foot  img{
+    		width: 18px;
+    		padding-left: 10px;
+    	}

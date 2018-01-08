@@ -1,0 +1,56 @@
+{extend name="user" /}
+
+{block name="css"}
+<link rel="stylesheet" href="__CSS__/user.css" />
+<style>
+    .lg{width:468px; height:700px; margin:100px auto; background:url(/static/images/regist_bg.png) no-repeat;}
+    .bn{
+        width:461px;
+        height:72px;
+        background:url(/static/images/login_enter.png) no-repeat;
+        border:0;
+        display:block;
+        font-size:18px;
+        color:#FFF;
+        font-family:Arial, Helvetica, sans-serif;
+        font-weight:bolder;
+    }
+    .lg_foot{
+        height:80px;
+        width:330px;
+        padding: 270px 68px 0 0px;
+    }
+</style>
+{/block}
+</head>
+
+{block name="body"}
+<div class="lg">
+    <form action="{:url('wechat/regist/regist')}" method="POST">
+        <div class="lg_top"></div>
+        <div class="lg_main">
+            <div class="lg_m_1">
+                <label>用户名:</label>
+                <input name="username" type="text" value="" placeholder="请输入用户名" class="ur" required/>
+                <label>密码:</label>
+                <input name="password" type="password" placeholder="请输入密码" value="" class="pw" />
+                <label>确认密码:</label>
+                <input name="repassword" type="password" value="" placeholder="请再输入密码" class="pw" />
+                <label>邮箱:</label>
+                <input name="email" type="text" value="" placeholder="请输入邮箱" class="pl" />
+                <label>QQ:</label>
+                <input name="qq" type="text" value="" placeholder="请输入qq号码" class="pl" />
+                <label>微信号:</label>
+                <input name="wechat" type="text" value="" placeholder="请输入微信号" class="pl" />
+
+            </div>
+        </div>
+        <div class="lg_foot">
+            <img class="bn"/>
+            <input style="position: relative;top: -72px;" type="submit" value="点这里注册" class="bn layui-btn" lay-submit lay-filter="*"/></div>
+    </form>
+</div>
+<div style="text-align:center;">
+    <p><a href="{:url('wechat/index/index')}">首页</a>&nbsp;|&nbsp;<a href="{:url('wechat/login/index')}">登录</a></p>
+</div>
+{/block}

@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    font-family: '微软雅黑';
+    font-weight: 400;
+}
+
+.main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 50px 10px;
+}
+
+.main .title {
+    border-bottom: 1px solid #e7e7eb;
+}
+
+.main .title h2 {
+    font-size: 24px;
+    line-height: 36px;
+    padding-bottom: 14px;
+}
+
+.clos-01 {
+    padding-top: 20px;
+}
+
+.clos-01 p {
+    color: rgb(72, 14, 0);
+    text-indent: 2em;
+    line-height: 36px;
+    margin: 7px auto;
+    text-align: justify;
+}
+
+.clos-01 .red-bg {
+    background-color: red;
+    color: #fff;
+    font-size: 18px;
+}
+
+.clos-01 p .red {
+    color: rgb(190, 0, 0);
+}
+
+.clos-01 img {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+
+@media screen and (max-width:700px) {
+    .clos-01 img {
+        width: 90%;
+    }
+}
+
+.clos-01 h3 {
+    line-height: 40px;
+    font-size: 20px;
+    font-weight: 600;
+    color: yellow;
+    background-color: red;
+    text-align: center;
+}
+
+.clos-01 .guy {
+    color: rgb(89, 87, 87);
+}
+
+.clos-01 h4 {
+    color: red;
+    font-weight: 600;
+    text-indent: 2em;
+    font-size: 20px;
+    line-height: 36px;
+}
+
+.clos-01 p .yellow-bg {
+    background-color: yellow;
+    color: red;
+    font-weight: 600;
+}
+
+.clos-01 p .red-bold {
+    color: rgb(190, 0, 0);
+    font-weight: 600;
+}
+
+.beian {
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+}
+
+.beian a {
+    font-size: 16px;
+    color: #666;
+    text-decoration: none;
+}
+
+.footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+}
+
+.footer .foot {
+    max-width: 760px;
+    margin: 0 auto;
+    background-color: red;
+}
+
+.footer .foot h3 {
+    font-size: 18px;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.footer .foot h3 .weixin,
+.clos-01 p .weixin {
+    font-size: 28px;
+    background-color: yellow;
+    color: red;
+    font-weight: 600;
+}
+
+{}

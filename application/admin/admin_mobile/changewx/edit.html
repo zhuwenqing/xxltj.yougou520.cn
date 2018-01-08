@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>广告管理后台</title>
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=2.0">
+	<link rel="stylesheet" type="text/css" href="__JS__/mobile/js/mdui/css/mdui.min.css">
+	<link rel="stylesheet" type="text/css" href="__JS__/mobile/css/style.css">
+	<link rel="stylesheet" type="text/css" href="__JS__/mobile/css/edit.css">
+	<script type="text/javascript" src="__JS__/mobile/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="__JS__/mobile/js/jquery.form.js"></script>
+	<script type="text/javascript" src="__JS__/mobile/js/mdui/js/mdui.min.js"></script>
+	<script type="text/javascript" src="__JS__/mobile/js/main.js"></script>
+	<script type="text/javascript" src="__JS__/mobile/js/edit.js"></script>
+</head>
+
+<body>
+	<!-- <div class="option">
+	</div> -->
+	<div class="main body">
+		<div class="mdui-toolbar mdui-color-teal title" mdui-headroom="options">
+			<a href="/admin/changewx/index.html" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">arrow_back</i></a>
+			<span class="mdui-typo-title">编辑微信名单</span>
+			<div class="mdui-toolbar-spacer"></div>
+			<!-- <a href="javascript:;" class="mdui-btn mdui-btn-icon mdui-ripple	"><i class="mdui-icon material-icons">search</i></a> -->
+			<a href="" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon material-icons">refresh</i></a>
+			<a href="javascript:;" class="mdui-btn mdui-btn-icon mdui-ripple"  mdui-menu="{target: '#option_menu'}"><i class="mdui-icon material-icons">more_vert</i></a>
+			<ul class="mdui-menu" id="option_menu">
+				<li class="mdui-menu-item">
+					<a href="{:url('admin/changewx/add')}" class="mdui-ripple">新增链接</a>
+				</li>
+				<li class="mdui-divider"></li>
+				<li class="mdui-menu-item">
+					<a href="javascript:;" class="mdui-ripple">退出</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="content mdui-p-a-1">
+			<form action="{:url('admin/changewx/update',array('id'=>$urlInfo.id))}" class="completeData" method="post">
+				<span class="item_name">授权账户</span>
+				<select class="mdui-select wx_uid" mdui-select="{position: 'bottom'}"  name="uid">
+					<option value="0">请选择授权</option>
+                    {foreach name="auth_user" item="av"}
+	                    <option value="{$av.id}" {if condition="$urlInfo['uid'] == $av['id']"}selected="selected"{/if}>{$av.nickname}</option>
+                    {/foreach}
+				</select>
+				<span class="item_name">网站地址</span>
+				<input class="mdui-textfield-input wx_change_url"  name="change_url" value="{$urlInfo.change_url}" type="text" placeholder="请输入网站地址(不带参数) "/>
+				<span class="item_name">添加微信号类型</span>
+                <select class="mdui-select addwx_mode wx_wid" mdui-select="{position: 'bottom'}"  name="wid">
+                    <option value="0">请选择添加微信号的类型</option>
+                    <option value="1" {if condition="$urlInfo['wid'] == 1"}selected{/if}>批量微信号+(可选)二维码闪图</option>
+                    <option value="2" {if condition="$urlInfo['wid'] == 2"}selected{/if}>对应微信号+对应微信二维码</option>
+                </select>
+
+                <div class="wx_mode mdui-hidden" data-id="1">
+					<span class="item_name">添加微信号</span>
+					<textarea  name="change_name" class="mdui-textfield-input c_wx" rows="4" placeholder="批量添加微信号，请输入微信号(至少一个) 多个微信号每行一个">{$urlInfo.change_name}</textarea>
+					<span class="item_name">二维码闪图</span>
+					<input type="text" name="qrcode_path" value="{if condition='$urlInfo.wid == 1'}{$urlInfo.qrcode_path}{/if}" class="mdui-textfield-input width_min mdui-float-left oneImgPath" />
+					<button type="button" class="mdui-btn mdui-ripple mdui-color-teal mdui-float-right upload_pic_btn">点击上传</button>
+                </div>
+
+                <div class="wx_mode mdui-hidden" data-id="2">
+					<span class="item_name">添加微信号</span>
+					<textarea  name="change_name" class="mdui-textfield-input c_wxs" rows="4" placeholder="批量添加微信号，请输入微信号(微信号二维码一一对应) 多个微信号每行一个">{$urlInfo.change_name}</textarea>
+					<span class="item_name">二维码</span>
+					<button type="button" class="mdui-btn mdui-ripple mdui-color-teal mdui-float-left uploads_pic_btn">上传二维码</button>
+					<div class="mdui-clearfix"></div>
+					<div class="ImgPaths">
+					{foreach name="urlInfo['qrcode_path']" item="v"}
+						<div class="img_list">
+							<input type="text"  name="qrcode_path[]" value="{$v}" class="mdui-textfield-input width_min mdui-float-left" />
+							<button type="button" class="mdui-btn mdui-ripple mdui-color-red mdui-float-right remove-img-btn">移除</button>
+						</div>
+					{/foreach}
+					</div>
+                </div>
+		
+                <span class="item_name">排序</span>
+				<input class="mdui-textfield-input wx_sort"  name="sort" type="text" value="{$urlInfo.sort}" placeholder="请输入网站地址(不带参数) "/>
+				
+				<span class="item_name">备注</span>
+				<textarea  name="remark" class="mdui-textfield-input wx_remark" rows="4" placeholder="（选填）请输入备注">{$urlInfo.remark}</textarea>
+
+				<div class="form_option">
+					<button type="button" class="mdui-btn mdui-ripple mdui-color-teal data_submit">提交</button>
+					<button type="reset" class="mdui-btn mdui-ripple mdui-color-red">移除</button>
+				</div>
+			</form>
+			<div class="mdui-hidden">
+				<form class="upload_img" enctype="multipart/form-data">
+					<input name="file" type="file" class="upload_file" />
+				</form>
+				<form class="uploads_img" enctype="multipart/form-data">
+					<input name="file[]" type="file" multiple="multiple" class="uploads_file" />
+				</form>
+			</div>
+		</div>
+
+		
+	</div>
+</body>
+</html>

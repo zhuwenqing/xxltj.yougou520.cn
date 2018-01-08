@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>html2json解析</title>
+    <script src="__JS__/html2json/lib/Pure-JavaScript-HTML5-Parser/htmlparser.js"></script>
+    <script src="__JS__/html2json/src/html2json.js"></script>
+    <!--<script src="__JS__/html2json.js"></script>-->
+</head>
+<body>
+
+
+<h2>hello</h2>
+{$result}
+</body>
+<script>
+
+    // 1 获取html文本区间
+    var html = document.body.innerHTML.trim();
+    // 打印html文本
+//    console.log(html);
+    //生成html文本对应的json格式数据
+    var json = html2json(html);
+
+//    console.log(json);
+    console.log(JSON.stringify(json, ' ', ' '));
+
+  //  console.assert(html === json2html(json));
+    // 生成处理结果
+
+
+</script>
+
+</html>

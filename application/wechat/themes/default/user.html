@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>微信录入</title>
+    <link rel="stylesheet" href="__JS__/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="__CSS__/font-awesome.min.css">
+    <!--CSS引用-->
+    {block name="css"}{/block}
+    <!--[if lt IE 9]>
+    <script src="__CSS__/html5shiv.min.js"></script>
+    <script src="__CSS__/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+{block name="body"}{/block}
+
+<script>
+    // 定义全局JS变量
+    var GV = {
+        current_controller: "wechat/{$controller|default=''}/",
+        base_url: "__STATIC__"
+    };
+</script>
+<!--JS引用-->
+
+<script src="__JS__/jquery.min.js"></script>
+<script src="__JS__/layui/lay/dest/layui.all.js"></script>
+<script src="__JS__/admin.js"></script>
+</body>
+</html>

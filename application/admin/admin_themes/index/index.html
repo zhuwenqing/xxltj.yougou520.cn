@@ -1,0 +1,125 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <table class="layui-table" style="width:48%;">
+        <colgroup>
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+            <tr>
+            <th></th>
+            <th>头条</th>
+            <th>爱奇艺</th>
+            <th>搜狗</th>
+            <th>百度</th>
+            <th>360</th>
+            </tr> 
+        </thead>
+        <tbody>
+            <tr>
+            <td>广告费(万)</td>
+            <td>50</td>
+            <td>30</td>
+            <td>15</td>
+            <td>36</td>
+            <td>26</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:400px;width:48%;"></div>
+</div>
+{/block}
+{block name="js"}
+<!-- ECharts单文件引入 -->
+<script src="__JS__/echarts/build/dist/echarts.js"></script>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+    // 路径配置
+    require.config({
+        paths: {
+            echarts: '__JS__/echarts/build/dist'
+        }
+    });
+    
+    // 使用
+    require(
+        [
+            'echarts',
+            'echarts/chart/pie', // 使用柱状图就加载bar模块，按需加载
+            'echarts/chart/funnel', // 使用柱状图就加载bar模块，按需加载
+        ],
+        function (ec) {
+            // 基于准备好的dom，初始化echarts图表
+            var myChart = ec.init(document.getElementById('main')); 
+            
+            option = {
+                title : {
+                    text: '统计今日广告费占比',
+                    subtext: '测试',
+                    x:'center'
+                },
+                tooltip : {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                legend: {
+                    orient : 'vertical',
+                    x : 'left',
+                    // data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+                    data:['头条','爱奇艺','搜狗','百度','360']
+                },
+                toolbox: {
+                    show : true,
+                    feature : {
+                        mark : {show: true},
+                        dataView : {show: true, readOnly: false},
+                        magicType : {
+                            show: true, 
+                            type: ['pie', 'funnel'],
+                            option: {
+                                funnel: {
+                                    x: '25%',
+                                    width: '50%',
+                                    funnelAlign: 'left',
+                                    max: 1548
+                                }
+                            }
+                        },
+                        restore : {show: true},
+                        saveAsImage : {show: true}
+                    }
+                },
+                calculable : true,
+                series : [
+                    {
+                        name:'广告费',
+                        type:'pie',
+                        radius : '55%',
+                        center: ['50%', '60%'],
+                        data:[
+                            // {value:335, name:'直接访问'},
+                            // {value:310, name:'邮件营销'},
+                            // {value:234, name:'联盟广告'},
+                            // {value:135, name:'视频广告'},
+                            // {value:1548, name:'搜索引擎'}
+                            {value:50, name:'头条'},
+                            {value:30, name:'爱奇艺'},
+                            {value:15, name:'搜狗'},
+                            {value:36, name:'百度'},
+                            {value:26, name:'360'}
+                        ]
+                    }
+                ]
+            };
+    
+            // 为echarts对象加载数据 
+            myChart.setOption(option); 
+            myChart.setTheme('macarons');
+        }
+    );
+</script>
+{/block}

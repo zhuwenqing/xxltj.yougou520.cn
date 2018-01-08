@@ -1,0 +1,29 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">换微信代码</label>
+                        <div class="layui-input-block" style="width: 35%;">
+                            <textarea name="remark" readonly disabled class="layui-textarea"><script src="https://{$_SERVER['HTTP_HOST']}/api/change_wx/get_wechat_num_qrcode2.html?code={$code}" language="JavaScript"></script></textarea>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script src="__JS__/kindeditor/kindeditor.config.js"></script>
+<script src="__JS__/kindeditor/kindeditor-all-min.js"></script>
+{/block}
+{block name="script"}
+<script>
+    KindEditor.ready(function(K) {
+        K.create('#content', KindEditorOptions);
+    });
+</script>
+{/block}

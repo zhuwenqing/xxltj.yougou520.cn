@@ -1,0 +1,97 @@
+{extend name="base" /}
+{block name="body"}
+
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class=""><a href="{:url('admin/Blog/index')}">文案管理</a></li>
+            <li class="layui-this">添加文案</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+
+                <form class="layui-form form-container" action="{:url('admin/Blog/add')}" method="post" enctype="multipart/form-data">
+
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">所属栏目</label>
+                        <div class="layui-input-block">
+                            <select name="cid" lay-verify="required">
+                                {foreach name="category_level_list" item="vo"}
+                                <option value="{$vo.id}">{neq name="vo.level" value="1"}|{php}for($i=1;$i<$vo['level'];$i++){echo ' ----';}{/php}{/neq} {$vo.name}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">广告模板</label>
+                        <div class="layui-input-block">
+                            <select name="web_type" lay-verify="required">
+                                <option value="0">无广告模板</option>
+                                <option value="1">普通广告模板</option>
+                                <option value="2">老中医模板</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">标题</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="title" value="" required  lay-verify="required" placeholder="请输入标题" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">微信名</label>
+                        <div class="layui-input-block">
+                            <input style="width: 313px;" type="text" name="wechatname" value="" class="layui-input layui-input-inline" id="wechatname" placeholder="微信名多个用|隔开,例如:0a|0b|0c">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">微信二维码</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="thumb" value="" class="layui-input layui-input-inline" id="thumb">
+                            <input type="file" name="file" class="layui-upload-file">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">微信名显示</label>
+                        <div class="layui-input-block">
+                            <input style="width:638px" type="text" readonly="readonly" value='<b><span style="color:#ff0000" id="weixin1"><script>document.write(wxnum);</script></span></b>' class="layui-input layui-input-inline">
+                            <br/><br/><br/><div style="color:#d60000">注:请在需要添加微信名的地方加上此行代码,在下方内容编辑的左上方按钮->HTML代码,点开编辑</div>
+                        </div>
+
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">内容</label>
+                        <div class="layui-input-block">
+                            <script id="content" name="content"  type="text/plain" ></script>
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button type="submit"  class="layui-btn">提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script type="text/javascript" charset="utf-8" src="__JS__/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="__JS__/ueditor/ueditor.all.min.js"> </script>
+<!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+<!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+<script type="text/javascript" charset="utf-8" src="__JS__/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+{/block}
+{block name="script"}
+<script type="text/javascript">
+        var ue = UE.getEditor('content');  // 使用所有功能
+</script>
+{/block}

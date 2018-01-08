@@ -1,0 +1,41 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <div style="font-size:20px;font-weight:bold;padding-top:5px;">统计域名:{$count_url}</div>
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class=""><a href="{:url('admin/adcount/detail',['id'=>$cid])}">统计详情</a></li>
+            <li class=""><a href="{:url('admin/adcount/wechat_count',['id'=>$cid])}">复制次数</a></li>
+            <li class=""><a href="{:url('admin/adcount/address_count',['id'=>$cid])}">地域统计</a></li>
+            <li class=""><a href="{:url('admin/adcount/advdata_page',['id'=>$cid])}">点击量/进线</a></li>
+            <li class=""><a href="{:url('admin/adcount/complaint',['id'=>$cid])}">投诉统计</a></li>
+            <li class="layui-this">统计代码</li>
+            <!-- <li class=""><a href="javascript:void(0)" onclick="window.history.go(-1);">返回</a></li> -->
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form form-container" action="{:url('admin/adcount/save')}" method="post">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">统计代码</label>
+                        <div class="layui-input-block">
+                            <textarea name="remark" readonly disabled class="layui-textarea"><script src="https://{$_SERVER['HTTP_HOST']}/api/count/tj_stat.html?id={$cid}&web_id={$cid}" language="JavaScript"></script></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script src="__JS__/kindeditor/kindeditor.config.js"></script>
+<script src="__JS__/kindeditor/kindeditor-all-min.js"></script>
+{/block}
+{block name="script"}
+<script>
+    KindEditor.ready(function(K) {
+        K.create('#content', KindEditorOptions);
+    });
+</script>
+{/block}

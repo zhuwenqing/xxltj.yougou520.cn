@@ -1,0 +1,75 @@
+body,html{
+    font-family: 微软雅黑;margin:0;padding:5px;
+}
+.main{
+    max-width:720px;padding:15px;margin:0 auto;border:1px #eee solid;box-shadow: 0 2px 5px #666;
+}
+hr{
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+    border:none;
+    border-top: 1px solid #eee;
+    
+}
+p{
+    line-height: 25px;text-align: justify;  
+}
+img{max-width:100%;}
+.red{color:red;}
+.center{text-align: center;}
+.top_title{
+    font-size: 22px;
+}
+.top_title .time{
+    color:#666;font-size: 14px;
+}
+p{
+    line-height: 25px;text-align: justify;letter-spacing: 2px;font-size: 16px;
+}
+
+.p1{
+    padding:10px;line-height: 30px;
+}
+.p1 b{
+    display:block;float:left;padding:10px;font-size: 35px;background:#000;color:#fff;
+}
+.p2{
+    text-align: center;margin-top:10px;
+}
+.p2 div{
+    display:inline-block;background:#f96e57;padding:5px;
+}
+.p2 div span{
+    display:inline-block;border:1px #fff dashed;padding:10px 20px;font-size: 25px;color:#fff;
+}
+.p3 span{
+    display:inline-block;background:red;padding:5px 10px;font-size: 25px;font-weight: 600;color:#fff;border-radius:15px 15px 0 0 ;
+}
+.p4{
+    line-height: 25px;letter-spacing: 2px;margin:15px 0;margin-bottom:40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.p9{
+    text-align: center;margin:15px;font-size: 14px;color:#e7b7b4;position:relative;
+}
+.p9 span{
+    display:inline-block;position:absolute;color:#888;
+}
+.p9 .read{
+    top:0px;left:0;
+}
+.p9 .jubao{
+    top:0px;right:0;
+}

@@ -1,0 +1,51 @@
+{extend name="base" /}
+{block name="body"}
+
+<header class="header" id="top">
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Navbar-Header -->
+                    <div class="navbar-header">
+                        <!-- Text-Logo -->
+                        <a href="" class="navbar-brand scrollto" title="">
+                            <img style="height:62px;" alt="" src="__STATIC__/images/logo.png">
+                        </a>
+                    </div><!-- /End Navbar-Header -->
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><font color="#FF0000">微信</font></li>
+                    </ul>
+
+                    <!-- Navbar-Collapse -->
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown active" ><a  href="{:url('wechat/index/index')}">首页</a></li>
+                        <li class="dropdown "><a  href="{:url('wechat/wechat/index')}">微信编辑器<span class="caret"></span></a></li>
+                        <li class="dropdown active"><a  href="{:url('wechat/video/index')}">视频专区<span class="caret"></span></a></li>
+                    </ul>
+                    <!-- /End Navbar-Collapse -->
+                </div>
+                <!-- /End Col -->
+            </div><!-- /End Row -->
+        </div><!-- /End Container -->
+    </nav>
+</header>
+
+
+
+{foreach name="wedetail" item="vo"}
+<div class="content" style="width: 100%; max-width:640px;margin: 0 auto;">
+    <div>
+        <h2>{$vo.title}</h2>
+            <hr>
+            <div style="padding-bottom: 20px;">
+                <span style="color: #bababa;">2017.05.15</span>
+                <span style="color: #80a6df; padding-left: 10px;">钟小小小小雨</span>
+            </div>
+        {$vo.content}
+    </div>
+</div>
+{/foreach}
+{/block}

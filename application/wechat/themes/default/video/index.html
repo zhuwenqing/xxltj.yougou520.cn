@@ -1,0 +1,115 @@
+{extend name="base" /}
+{block name="body"}
+<link rel="stylesheet" href="__JS__/videoplayer/css/bootstrap-3.3.4_1.css" media="all">
+<link rel="stylesheet" href="__JS__/videoplayer/css/willesplay_1.css" media="all">
+<script src="__JS__/videoplayer/js/jquery-1.10.2_1.js" type="text/javascript"></script>
+<script src="__JS__/videoplayer/js/willesplay_1.js"></script>
+<header class="header" id="top">
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Navbar-Header -->
+                    <div class="navbar-header">
+                        <!-- Text-Logo -->
+                        <a href="" class="navbar-brand scrollto" title="">
+                            <img style="height:62px;" alt="" src="__STATIC__/images/logo.png">
+                        </a>
+                    </div><!-- /End Navbar-Header -->
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><font color="#FF0000">微信</font></li>
+                    </ul>
+
+                    <!-- Navbar-Collapse -->
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown " ><a  href="{:url('wechat/index/index')}">首页</a></li>
+                        <li class="dropdown "><a  href="{:url('wechat/wechat/index')}">微信编辑器</a></li>
+                        <li class="dropdown active"><a  href="{:url('wechat/video/index')}">视频专区</a></li>
+                    </ul>
+                    <!-- /End Navbar-Collapse -->
+                </div>
+                <!-- /End Col -->
+            </div><!-- /End Row -->
+        </div><!-- /End Container -->
+    </nav>
+</header>
+
+
+
+<div class="videos">    
+<a href="{:url('wechat/Video/add')}" class="upLoad">视频上传</a>
+<h2 class="video-title">在线视频列表 | <span>VIDEO DISPLAY</span></h2>   
+{foreach name="wevideos" item="vo"}
+        <div class="video" videoName="{$vo.title}" videoUrl="{$vo.path}">
+			<p>{$vo.title}</p>
+            <img src="{$vo.thumb}" width="310" height="250"/>
+		</div>
+{/foreach}
+    <div class="clear"></div>
+</div>		
+<!--<div class="upLoading"></div>-->
+<div class="videocont">
+<div id="willesPlay">
+		<b class="closeBtn">&times;</b>
+        <div class="playHeader">
+          <div class="videoName"></div>
+		  
+        </div>
+        <div class="playContent">
+          <!--<div class="turnoff">
+            <ul>
+              <li><a href="javascript:;" title="喜欢" class="glyphicon glyphicon-heart-empty"></a></li>
+              <li><a href="javascript:;" title="关灯" class="btnLight on glyphicon glyphicon-sunglasses"></a></li>
+              <li><a href="javascript:;" title="分享" class="glyphicon glyphicon-share"></a></li>
+            </ul>
+          </div>-->
+          <div class="playVideo">
+          <video width="100%"  id="playVideo">
+            <source src="" type="video/mp4"></source>当前浏览器不支持video
+         </video>
+            </div>
+          <div class="playTip glyphicon glyphicon-play"></div>
+        </div>
+        <div class="playControll">
+          <div class="playPause playIcon"></div>
+          <div class="timebar"> <span class="currentTime">0:00:00</span>
+            <div class="progress">
+              <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+            <span class="duration">0:00:00</span> </div>
+          <div class="otherControl"> <span class="volume glyphicon glyphicon-volume-down"></span> <span class="fullScreen glyphicon glyphicon-fullscreen"></span>
+            <div class="volumeBar">
+              <div class="volumewrap">
+                <div class="progress">
+                  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 8px;height: 40%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+<script>
+$('.video').click(function(){
+    var name = $(this).attr('videoName');
+    var url = $(this).attr('videoUrl');
+    $('#willesPlay .videoName').html(name);
+    $('#willesPlay #playVideo').html('<source src="'+url+'" type="video/mp4"></source>');
+    $('.videocont').show();
+
+});
+$("body").on('click', ".closeBtn", function(){
+    window.location.reload();
+    $('.videocont').hide(); 
+});
+
+
+</script>
+
+
+
+
+
+{/block}

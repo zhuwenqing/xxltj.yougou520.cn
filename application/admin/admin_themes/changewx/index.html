@@ -1,0 +1,102 @@
+{extend name="base" /} {block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">更换微信号管理</li>
+            <li class=""><a href="{:url('admin/changewx/add')}">添加域名微信号</a></li>
+        </ul>
+        <div class="layui-tab-content">
+            <form class="layui-form layui-form-pane" action="{:url('admin/changewx/index')}" method="get">
+                <div class="layui-inline">
+                    <label class="layui-form-label">分类</label>
+                    <div class="layui-input-inline">
+                        <select name="cid">
+                            <option value="0">全部</option>
+                            {foreach name="category_level_list" item="vc"}
+                            <option value="{$vc.id}" {if condition="$cid==$vc.id"} selected="selected"{/if}>{neq name="vc.level" value="1"}|{php}for($i=1;$i<$vc['level'];$i++){echo ' ----';}{/php}{/neq} {$vc.name}</option>
+                            {/foreach}
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">关键词</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="keyword" value="{$keyword}" placeholder="请输入关键词" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn">搜索</button>
+                </div>
+            </form>
+            <hr>
+
+            <div class="layui-tab-item layui-show">
+                <table class="layui-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 30px;">ID</th>
+                            <th style="width: 30px;">排序</th>
+                            <th>识别码</th>
+                            <th>域名</th>
+                            <th>渠道</th>
+                            <th>微信号</th>
+                            <!-- <th>二维码</th> -->
+                            <th>备注</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {foreach name="url_list" item="vo"}
+                        <tr>
+                            <td>{$vo.id}</td>
+                            <td>{$vo.sort}</td>
+                            <td>{$vo.code}</td>
+                            <td>{$vo.change_url}</td>
+                            <td>(空)</td>
+                            <td>{$vo.change_name|unserialize|count}个微信号&nbsp;&nbsp;<a style="color:#6CA6CD" href="javascript:;" onclick='show_w_name({$vo.change_name|unserialize|json_encode});'>详情</a></td>
+                            <!-- <td>
+                                {if condition="$vo['wid'] eq 2"} {foreach name="$vo['qrcode_path']|unserialize" item="vq"}
+                                <img style="width:10%;" src="{$vq}" /> {/foreach} {else \}
+                                <img style="width:10%;" src="{$vo.qrcode_path}" /> {/if}
+                            </td> -->
+                            <td>{$vo.remark}</td>
+                            <td>
+                                <a href="{:url('admin/changewx/detail',array('id'=>$vo['id']))}" class="layui-btn layui-btn-normal layui-btn-mini">查看代码</a>
+                                <a target="_blank" href="{$vo.change_url}" class="layui-btn layui-btn-normal layui-btn-mini">检测</a>
+                                <a href="{:url('admin/changewx/edit',['id'=>$vo['id']])}" class="layui-btn layui-btn-normal layui-btn-mini">编辑</a>
+                                <a href="{:url('admin/changewx/delete',['id'=>$vo['id']])}" class="layui-btn layui-btn-danger layui-btn-mini ajax-delete">删除</a>
+                            </td>
+                        </tr>
+                        {/foreach}
+                    </tbody>
+                </table>
+            </div>
+            {$url_list->render();}
+        </div>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script>
+    function show_w_name(json){
+        console.log(json.length);
+        var str = '';
+        for(var i = 0;i < json.length;i++){
+            
+            if((i+1)%2 == 0){
+                str += json[i].replace(/\s+/g,"") + '<br />';
+            }else{
+                str += json[i].replace(/\s+/g,"") + ' ';
+            }
+        }
+        layui.use('layer', function(){
+        var layer = layui.layer;
+            layer.open({
+                title: '微信号'
+                ,content: str
+            });  
+        }); 
+    }
+</script>
+{/block}

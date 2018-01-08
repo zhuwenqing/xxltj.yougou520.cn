@@ -1,0 +1,266 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	font-family: '微软雅黑';
+}
+
+.contain_box{
+	padding: 5px;
+	max-width: 760px;
+	margin: 0 auto;
+	border-left: 1px solid #e8e8e8;
+	border-right: 1px solid #e8e8e8;
+}
+
+.main_img{
+}
+
+.main_img img{
+	width: 100%;
+}
+
+h2{
+	font-size: 18px;
+	line-height: 30px;
+	text-indent: 2em;
+	color: #333;
+	text-align: justify;
+	padding: 0px 10px;
+}
+
+.pad{
+	text-indent: 0em;
+}
+
+.red{
+	color: red;
+}
+
+.main_600{
+	max-width: 600px;
+	margin: 10px auto;
+	text-align: center;
+	font-size: 14px;
+	color: #333;
+}
+
+.main_600 img{
+	width: 100%;
+}
+
+.main_contain{
+	padding: 0px 10px;
+}
+
+p{
+	font-size: 18px;
+	color: #333;
+	text-align: justify;
+	text-indent: 2em;
+	padding-bottom: 10px;
+}
+.bold{
+	font-weight: 600;
+}
+
+.title_bg{
+	text-align: center;
+}
+
+.title_box{
+	border-top: 5px solid #ab1b0e;
+	border-bottom: 5px solid #ab1b0e;
+	border-radius: 10px;
+	display: inline-block;
+	text-align: center;
+	font-size: 30px;
+	padding: 15px 20px;
+	font-weight: 600;
+	color: #333;
+	margin: 10px auto;
+}
+
+p .orange{
+	color: #c21700;
+}
+
+.tl_01{
+	background-color: #e2dcdc;
+	padding: 5px 10px;
+}
+
+.view_box{
+
+	border-left: 1px dashed #c2c2c2;
+	border-right: 1px dashed #c2c2c2;
+}
+
+.view_top{
+	line-height: 45px;
+	color: #474747;
+	background-color: #c7c7c7;
+	padding-left: 10px;
+}
+
+.floor{
+	overflow: hidden;
+	padding: 15px;
+	border-bottom: 1px solid #c2c2c2;
+}
+
+.floor .floor_img{
+	float: left;
+	width: 35px;
+	height: auto;
+	display: block;
+}
+
+.floor .name{
+	font-size: 18px;
+	color: #f00;
+	line-height: 20px;
+	padding-left: 5px;
+}
+
+.floor .num{
+	color: #959595;
+	font-size: 15px;
+	line-height: 16px;
+	padding-left: 5px;
+}
+
+.floor_main{
+	padding-left: 40px;
+	color: #333;
+	font-size: 16px;
+	line-height: 24px;
+	text-align: justify;
+	padding-top: 10px;
+}
+
+.floor_bottom{
+	padding-left: 40px;
+	color: #333;
+	font-size: 16px;
+	text-align: justify;
+	margin-top: 6px;
+	padding-top: 6px;
+	border-top: 1px dashed #c2c2c2;
+}
+
+.floor_bottom .blue{
+	color: #1c61df;
+}
+
+.footer_box{
+	width: 100%;
+	position: fixed;
+	bottom: 0px;
+}
+
+.foot{
+	max-width: 720px;
+	margin: 0 auto;
+	background-color: #be0000;
+	line-height: 36px;
+	color: #fff;
+	font-size: 20px;
+	padding: 0px 10px;
+	text-align: center;
+}
+
+.weixin{
+	color: red;
+	background-color: yellow;
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.click {
+    position: fixed;
+    right: 50%;
+    margin-right: -440px;
+    top: 8%;
+}
+
+@media screen and (max-width:720px) {
+    .click {
+        right: 2%;
+        margin-right: 0px;
+        top: 8%;
+    }
+}
+
+.click img {
+    width: 80px;
+    height: 80px;
+}
+
+@media screen and (max-width:720px) {
+    .click img {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    transform: translate3d(-50%, -50%, 0px);
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 10px 0px;
+    display: none;
+    box-shadow: 1px 1px 3px #424242;
+    text-align: center;
+    color: #656565;
+    z-index: 2;
+}
+
+.popup .first span .spance,
+.popup .open span .spance {
+    letter-spacing: 5px;
+}
+
+.popup .close {
+    padding: 0 10px;
+    overflow: hidden;
+    color: #dd2736;
+}
+
+.popup .close span {
+    float: right;
+}
+
+.popup .add {
+    text-align: center;
+    background-color: #e13f94;
+    padding: 8px 0px;
+    margin: 15px 0px;
+}
+
+.popup .add span {
+    line-height: 40px;
+    font-size: 28px;
+}
+
+.popup .open {
+    text-align: center;
+    color: #666;
+}
+
+.popup .liwu {
+    text-align: center;
+    color: #999;
+    padding-bottom: 20px;
+    margin-top: 15px;
+}
+
+.popup .liwu a {
+    font-size: 18px;
+    color: #d5271e;
+    text-decoration: underline;
+}

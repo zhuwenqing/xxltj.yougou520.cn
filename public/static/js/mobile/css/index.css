@@ -1,0 +1,53 @@
+.body > .title{
+	border-bottom: 1px #eee solid;line-height: 40px;font-size: 16px;
+}
+.body > .title .mdui-typo-title{
+	font-size: 16px;
+}
+.result{
+	font-size: 0.9rem;margin:10px;border:1px #eee solid;margin-top: 5px;
+}
+.result .r_head{
+	background:#f8f8f8;padding:0 5px;font-size: 1rem;font-weight:400;height:1.5rem;
+}
+.content{
+	padding-top: 15px;
+}
+.content .filter{
+	border-bottom: 1px #eee solid;margin: 10px;padding-bottom: 5px;line-height: 1.5rem;
+}
+.content .filter input{
+	margin-bottom: 5px;
+}
+
+.result .r_head span{
+	display: inline-block;font-size: 14px;
+}
+
+.r_body .mdui-panel-item-open>.mdui-panel-item-header{
+	height:40px;
+}
+.mdui-panel-item-actions{
+	padding:0;
+}
+.r_body .title_id{
+	width:12%;min-width: 12%;padding-right: 0;margin-right: 10px;text-align: center;
+}
+.r_body .padding_0{
+	padding:0 10px;	
+}
+.r_body blockquote{
+	padding-left: 5px;
+}
+.r_body blockquote p{
+	margin-bottom: 0;
+}
+.r_body .btn_class{
+	text-align: center;margin:0;padding-top: 5px;
+}
+.mdui-overlay-show{
+	z-index: -1!important;
+}
+.r_body .code_show{
+	font-size: 14px;
+}

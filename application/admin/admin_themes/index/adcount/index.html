@@ -1,0 +1,71 @@
+{extend name="base" /} {block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">统计管理</li>
+            <li class=""><a href="{:url('admin/adcount/index')}">添加域名</a></li>
+        </ul>
+        <div class="layui-tab-content">
+            <!--<form class="layui-form layui-form-pane" action="{:url('admin/adcount/detail')}" method="get">
+                &nbsp;&nbsp;&nbsp;
+                <div class="layui-inline">
+                    <label class="layui-form-label">开始时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="start_time" value="" class="layui-input datetime">
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">结束时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="end_time" value="" class="layui-input datetime">
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <button class="layui-btn">搜索</button>
+                </div>
+            </form>
+            <hr>-->
+
+            <div class="layui-tab-item layui-show">
+                <table class="layui-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 30px;">ID</th>
+                            <th style="width: 30px;">排序</th>
+                            <th>统计域名</th>
+                            <th>独立访问ip量</th>
+                            <th>独立复制ip量</th>
+                            <th>总访问ip量</th>
+                            <th>总复制ip量</th>
+                            <th>备注</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {foreach name="url_list" item="vo"}
+                        <tr>
+                            <td>{$vo.id}</td>
+                            <td>{$vo.sort}</td>
+                            <td><a href="{:url('admin/adcount/detail',['count_url'=>urlencode($vo['count_url'])])}">{$vo.count_url}</a></td>
+                            <td>{$vo.count_ip_num}</td>
+                            <td>{$vo.count_copy_ip_num}</td>
+                            <td>{$vo.count_visit}</td>
+                            <td>{$vo.count_copy_num}</td>
+                            <td>{$vo.remark}</td>
+                            <td>
+                                <a href="{:url('admin/adcount/edit',['id'=>$vo['id']])}" class="layui-btn layui-btn-normal layui-btn-mini">编辑</a>
+                                <a href="{:url('admin/adcount/delete',['count_name'=>urlencode($vo['count_url'])])}" class="layui-btn layui-btn-danger layui-btn-mini ajax-delete">删除</a>
+                            </td>
+                        </tr>
+                        {/foreach}
+                    </tbody>
+                </table>
+                {$url_list->render();}
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">var _speedMark = new Date();</script>
+    <meta charset="utf-8"/>
+    <title>广州凡谷摄影有限公司</title>
+    <meta name="keywords" content="腾讯风铃,风铃建站,微信管理,手机网站,移动建站,个人网站,微网站,群发消息" />
+    <meta name="description" content="腾讯风铃立足打造高效广泛实用的移动建站工具，帮助品牌快速构建移动营销站点，借助微信、QQ等助力商家达成最佳的互动营销效果。风铃建站提供多行业解决方案，可快速创建微餐饮、微酒店、微商城、微客服等行业性网站。" />
+    <meta name="viewport" content="user-scalable=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+    <meta content="telephone=no" name="format-detection" />
+    <script>var __timePoints={start:(+new Date)};</script>
+    <link rel="stylesheet" href="__CSS__/gdt/hz/css/page_1.css"/>
+    <script type="text/javascript" src="__CSS__/gdt/hz/js/jquery-3.1.1.min_1.js"></script>
+    <!--    <script type="text/javascript" src="/common/md5.js?v=--><!--"></script>-->
+    <script type="text/javascript" src="__CSS__/gdt/hz/js/jquery.touchwipe_1.js"></script>
+    <script type="text/javascript" src="__CSS__/gdt/hz/js/utils_1.js"></script>
+    <script type="text/javascript">
+        window.Fy = {
+            token : '52e96910e6c02a4a785047571c3b16e3',
+            timestamp : '1501554553',
+            start:(+new Date),
+            rId : 'BNI7nGf9U',
+            qz_gdt : '',
+            version : '201707151019'
+        }
+        window.gdtAdvertiserId = "4707800";
+        window.gdtConversionId = "21545";
+        window.CUSTOM_HOST = "http://flzhan.cn";
+        window.MANAGE_HOST = "http://gdt.zhan.qq.com";
+        window.ADMIN_HOST = "http://gdtadmin.zhan.qq.com";
+        if(!window.FlquickCommon.getUrlParam('nreport')){
+            window.FlquickCommon.gdtReport.init(Fy.token , Fy.timestamp);
+        }
+    </script>
+</head>
+<body name="top" style="background-color:wuxihunsha !important;">
+<div id="telalert" style="text-align: center;width:300px;height:200px;background:#fff;position: fixed;
+		top:40%;left:55%;transform: translate3d(-50%, -50%, 0px);z-index: 999;
+	margin-left:-200px;margin-top:-100px;border-radius:10px;border:1px #eee solid;box-shadow: 0 0 15px #999;display:none;
+		">
+    <p  style="display:inline-block;float:right;margin:0;width:25px;height:25px;color:#fff;background:#000;text-align: center;border-radius:50%;cursor: pointer;" onclick="telalerthide()">&times;</p>	<br/><br/>
+    <b style="font-size: 35px;color:red;line-height: 40px;">咨询热线</b>
+    <b style="font-size: 35px;color:red;line-height: 40px;">15914995074</b>
+</div>
+<div id="mobile-preview-container">
+
+    <div class="VAct_modelBox VAct_Multiimage" type="Multiimage" id="VAct_Multiimage_14907789294156" >
+        <div class="VAct_Multiimage_image" type="Multiimage" style="padding:0 px;box-sizing: border-box;text-align:center;font-size: 0px;position:;bottom:px;" >
+            <img class="multiimage-image" style="opacity:;max-width:100%;" data-link="" asrc="__CSS__/gdt/hz/picture/banner.jpg">
+        </div>
+        <script>
+
+            $("#VAct_Multiimage_14907789294156").delegate(".multiimage-image", 'click', function () {
+                var link = $(this).data('link');
+                link && window.open(link, "_blank");
+            })
+        </script>
+        <div class="VAct_modelBox" type="Gallery" id="VAct_Gallery_15009696159712" >
+            <div class="v-gallery-style">
+
+            </div>
+        </div>
+        <style>
+            /*compoents*/
+            .v-gallery-style{
+                overflow:hidden;
+                width:100%;
+            }
+            .gallery-c-list-d{
+                position: relative;
+                overflow: hidden;
+
+                height: 140px;
+            }
+            .gallery-c-list-ul{
+                height: 100%;
+                position: absolute;
+                /*	transition: all 1.5s;
+                    -moz-transition: all 1.5s; /* Firefox 4 */
+                /*	-webkit-transition: all 1.5s;  Safari 和 Chrome
+                    -o-transition: all 1.5s;*/ /* Opera */
+            }
+            .gallery-c-list-item{
+                height: 100%;
+                position: relative;
+                float: left;
+                list-style: none;
+                background-repeat: no-repeat;
+                background-position: 50%;
+                position: relative;
+                background-color: #f1f1f1;
+                background-size: 100% auto;
+            }
+        </style>
+        <script>
+
+            (function($,window){
+                var gallerySort = 1;
+                //重新构造图片和幻灯片组件
+                //幻灯片出现的位置 0 1则进行幻灯片的第一页首屏加载
+                var setOnce = false
+                var timer
+                if(gallerySort == 0 || gallerySort == 1){
+                    window.isHasGallery = true;  //给图片组件是否标示是否存在幻灯片
+                }else{
+                    window.isHasGallery = false; //给图片组件是否标示是否存在幻灯片
+                }
+                function preLoad(array,callback,allCallback) {
+                    var deferes = []
+                    array.forEach(function (url,index) {
+                        var def = jQuery.Deferred()
+                        deferes.push(def)
+                        var img = new Image();
+                        img.src = url;
+                        img.onload = img.onerror =  img.oncomplete = function (event) {
+                            callback.apply(this,[event,index]);
+                            def.resolve()
+                        }
+                    })
+
+                    $.when.apply(deferes).then(function(){
+                        allCallback && allCallback()
+                    })
+
+                }
+
+                var height = 70;
+                var ratio = 320 / height;
+
+                if(FlquickCommon.isMobile()){
+                    var width = window.screen.width; //移动站点中显示的宽度
+                    var h = width / ratio
+                    $("#VAct_Gallery_15009696159712").find('.gallery-c-list-d').css('height',h);
+                }else {
+                    if(top != window){
+                        var width = 320; //iframe中显示的宽度
+                    }else{
+                        var width = 640; //pc显示宽度
+                    }
+                    var height = (width / (320)) * 70
+                    $("#VAct_Gallery_15009696159712").find('.gallery-c-list-d').css('height',height);
+
+                }
+                $('.gallery-c-list-ul').css('width',width * (1 + 1)+ 'px');
+                $('.gallery-c-list-d').css('width',width+'px');
+                $('.gallery-c-list-item').css('width',width+'px');
+                var n = 0;
+
+                var requestAnimFrame = (function(){
+                    return  window.requestAnimationFrame       ||
+                            window.webkitRequestAnimationFrame ||
+                            window.mozRequestAnimationFrame    ||
+                            function( callback ){
+                                window.setTimeout(callback, 1000 / 60);
+                            };
+                })();
+                requestAnimFrame(function(){
+
+                });
+
+                if (!window.cancelAnimationFrame){
+                    window.cancelAnimationFrame = function(id) {
+                        clearTimeout(id);
+                    };
+                }
+
+
+                var setMyInterval = function (fn,interval) {
+                    var i =0;
+                    (function animloop(){
+                        i++
+                        requestAnimFrame(animloop);
+                        if(i%100 == 0){
+                            fn();
+                        }
+                    })();
+                }
+                function initThisGalleryStart(){
+                    var i = 0;
+                    var total = 1;
+                    preLoad([			"" ,],function (e,index) {
+                        var h = this.naturalHeight
+                        var w = this.naturalWidth
+                        var r = w / h
+                        if(r.toFixed(2) >= ratio.toFixed(2)) {
+                            $("#VAct_Gallery_15009696159712").find('.gallery-c-list-item[data-order=' + index + ']').css('background-size','100% auto')
+                        } else {
+                            $("#VAct_Gallery_15009696159712").find('.gallery-c-list-item[data-order=' + index + ']').css('background-size','auto 100%')
+                        }
+                        i++;
+
+                    },function(){
+                        if(total <= 1 || setOnce) return;
+                        /*				if(timer) clearInterval(timer)*/
+                        timer = setMyInterval((function(or){
+                            return function (argument) {
+                                if(or == 0){
+                                    $('#' + 'VAct_Gallery_15009696159712').find('.gallery-c-list-ul').css('left','0px')
+                                }
+                                $('#' + 'VAct_Gallery_15009696159712').find('.gallery-c-list-ul').animate({'left':('-' + (or * parseInt(width) + parseInt(width)) + 'px')});
+                                or = ( ++ or ) % 1
+                            }
+                        })(n), 3 * 1000);
+                        setOnce = true
+                    })
+                }
+
+                if(!window.initGalleryStart) window.initGalleryStart = initThisGalleryStart
+                else{
+                    var fn = window.initGalleryStart
+                    window.initGalleryStart = function(){
+                        fn()
+                        initThisGalleryStart()
+                    }
+                }
+
+            })(jQuery,window)
+
+
+
+
+        </script>            		<div class="VAct_modelBox VAct_Multiimage" type="Multiimage" id="VAct_Multiimage_14995046094941" >
+    </div>
+        <script>
+
+            $("#VAct_Multiimage_14995046094941").delegate(".multiimage-image", 'click', function () {
+                var link = $(this).data('link');
+                link && window.open(link, "_blank");
+            })
+        </script>
+        <div class="VAct_modelBox VAct_Paragraph" style="background-color:;box-sizing: border-box;padding:0 10px;text-align:center;" type="Paragraph" id="VAct_Paragraph_14995046098184"><p>广州凡谷摄影有限公司 <br/>个性写真多年，拥有专业的团队和贴心的服务做一家有态度有爱的摄影。<br/>用我们的真诚和专业征服年轻市场，引爆全民时尚，专注创作，张扬个性。</p><p>灵深处，一份真情在宽容中永恒，在光阴里成长，在时光里驻足，在血液里交融，在彼此的体凉中走的更远，风雨与共，默默相守。迷离尘世，魅影浮萍，情锁眉心，寂寂窗棂，心弥漫着萎靡音瑟，醺落一行情泪，韵染一笺诗篇。</p><p>我们用镜头透视灵魂，发现你的美丽，其实你也很美！</p><p style="color:red;">8月至9月，报名拍照想享受8折优惠！</p><p>门店地址：	广州市天河区东圃大马路二横路9号自编1205房</p><p>热线电话：15914995074</p></div>
+        <script>
+            if(FlquickCommon.isMobile()){
+                $(".VAct_Paragraph img").each(function(e){
+                    var width = $(this).width();
+                    var height = $(this).height();
+                    if(width >=320){
+                        $(this).css('width','100%');
+                        $(this).css('height','auto');
+                    }
+                })
+            }
+        </script>            <div class="VAct_modelBox VAct_Paragraph" style="background-color:#000;box-sizing: border-box;padding:0 0px;line-height:" type="Paragraph" id="VAct_Paragraph_14891165008037"><p style="text-align: center;"><span style="font-size:20px;"><span style="color:#e6e6fa;"><span style="line-height:3.0;"><strong>马上预约，专享优惠</strong></span></span></span></p></div>
+        <script>
+            if(FlquickCommon.isMobile()){
+                $(".VAct_Paragraph img").each(function(e){
+                    var width = $(this).width();
+                    var height = $(this).height();
+                    if(width >=320){
+                        $(this).css('width','100%');
+                        $(this).css('height','auto');
+                    }
+                })
+            }
+        </script>                <script type="text/javascript" src="__CSS__/gdt/hz/js/weui_1.js"></script>
+        <link href="__CSS__/gdt/hz/css/weui.min_1.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript" src="__CSS__/gdt/hz/js/region_1.js"></script>
+        <div class="VAct_modelBox" pid="185235" id="VAct_Smartform_15009696159497" type="Smartform">
+            <form id="VAct_Smartform_15009696159497_form">
+                <div class="weui-cells weui-cells_form" style="margin-top: 0px;" id="smartform">					<div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">类型			<label class="red">*</label>						</label></div>
+                    <div class="weui-cell__bd">
+                        <div class="flquick_smart_radio flquick_smart_radio_multiselects">										<label class=" block"><input class="sm-radio-input" type="checkbox" name="multiselects1" value="阳光清新">阳光清新</label>										<label class=" block"><input class="sm-radio-input" type="checkbox" name="multiselects1" value="唯美浪漫">唯美浪漫</label>										<label class=" block"><input class="sm-radio-input" type="checkbox" name="multiselects1" value="创意水下">创意水下</label>										<label class=" block"><input class="sm-radio-input" type="checkbox" name="multiselects1" value="复古经典">复古经典</label>							</div>
+                    </div>
+                </div>
+                    <div class="weui-cell2"></div>					<div class="weui-cell">
+                        <div class="weui-cell__hd"><label class="weui-label">婚期						</label></div>
+                        <div class="weui-cell__bd">
+                            <div class="flquick_smart_radio flquick_smart_radio_multiselect">										<label class=" block"><input class="sm-radio-input" type="radio" name="multiselect1" value="三个月之内">三个月之内</label>										<label class=" block"><input class="sm-radio-input" type="radio" name="multiselect1" value="半年之内">半年之内</label>										<label class=" block"><input class="sm-radio-input" type="radio" name="multiselect1" value="一年之内">一年之内</label>							</div>
+                        </div>
+                    </div>
+                    <div class="weui-cell2"></div>					<div class="weui-cell ">
+                        <div class="weui-cell__hd">
+                            <label class="weui-label">姓名			<label class="red">*</label>							</label>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <input class="weui-input" data-validator="" name="input1"" type="text" placeholder="请输入姓名">
+                        </div>
+
+                    </div>
+                    <div class="weui-cell2"></div>
+
+                    <div class="weui-cell ">
+                        <div class="weui-cell__hd">
+                            <label class="weui-label">手机			<label class="red">*</label>							</label>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <input class="weui-input" data-validator="phone" name="phone"" type="text" placeholder="请输入手机">
+                        </div>
+
+                    </div>
+                    <div class="weui-cell2"></div>
+
+                    <div class="weui-btn-area" style="margin-bottom:30px;">
+                        <a class="weui-btn weui-btn_primary smartform_submit" data-clickid="3" style="background-color:rgb(183,0,5);color:white;" href="javascript:" id="_submit">立即预订</a>
+                    </div>
+                    <center style="line-height: 35px;">广州凡谷摄影有限公司</center>
+                </div>
+
+            </form>
+        </div>
+        <script type="text/javascript" src="__CSS__/gdt/hz/js/smartformpage_1.js"></script>
+        <script>
+            SmartformConfigInit('VAct_Smartform_15009696159497','185235','4707800','21544',{
+                'download':'0',
+                'link':''
+            });
+        </script>            		<div class="VAct_modelBox VAct_Multiimage" type="Multiimage" id="VAct_Multiimage_14907788637102" >
+        <div class="VAct_Multiimage_image" type="Multiimage" style="padding:0 px;box-sizing: border-box;text-align:center;font-size: 0px;position:;bottom:px;" >
+            <img class="multiimage-image" style="opacity:;max-width:100%;" data-link="" asrc="__CSS__/gdt/hz/picture/banner1.jpg">
+        </div>		</div>
+        <script>
+
+            $("#VAct_Multiimage_14907788637102").delegate(".multiimage-image", 'click', function () {
+                var link = $(this).data('link');
+                link && window.open(link, "_blank");
+            })
+        </script>
+        <div class="VAct_modelBox" type="Button" id="VAct_Button_15009696157532" style="text-align:center;position:fixed;bottom:0px;z-index:999">
+            <a class="v-button-style data-report"  href="#" style="display:inline-block;width:100%;height:45px;line-height:45px;color:#fff;font-size:16px;background:rgb(60, 60, 61);margin-bottom:-6px;">返回顶部</a>
+        </div>
+        <script>
+            $("#VAct_Button_15009696157532").delegate("button", 'click', function () {
+                if("#smartform" != ''){
+                    window.location.href = '#smartform';
+                }
+            })
+        </script>            	<div class="VAct_modelBox" type="Button" id="VAct_Button_15009696157679" style="text-align:center;position:relative;bottom:0px;">
+        <!-- <button class="v-button-style data-report" data-btnlink="" data-type="button" data-clickid="4" style="width:100%;height:45px;color:#fff;font-size:16px;background:#fff"></button> -->
+    </div>
+        <script>
+            $("#VAct_Button_15009696157679").delegate("button", 'click', function () {
+                if("" != ''){
+                    window.location.href = '';
+                }
+            })
+        </script>            	<div class="VAct_modelBox VAct_Phone" type="Phone" style="position:fixed;bottom:150px;z-index:999;height:45px" id="VAct_Phone_15009696153088">
+        <div class="v-phone-style" style="text-align:right;height:100%">
+            <a onclick="telalert()" style="display: block;height:100%" class="data-report" >
+                <img src="__CSS__/gdt/hz/picture/0185058885465528271134561541071.png"style="vertical-align: bottom;height:100%">
+            </a>
+        </div>
+
+    </div>
+        <script>
+            function telalert(){
+                $('#telalert').show();
+            }
+            function telalerthide(){
+                $('#telalert').hide();
+            }
+        </script>            <script type="text/javascript">
+        var gdt_tracker = gdt_tracker || [];
+        gdt_tracker.push(["set_account_id", "4707800"]);
+        gdt_tracker.push(["add_action", "TRACK_CONVERSION", "21545"]);
+        gdt_tracker.push(["send"]);
+
+        (function(){
+            var doc=document, h=doc.getElementsByTagName('head')[0], s=doc.createElement('script');
+            s.async=true;
+            s.src="//qzs.qq.com/qzone/biz/res/gt.js";
+            h && h.insertBefore(s, h.firstChild)
+        })();
+    </script>
+
+    </div>
+    <!--<script type="text/javascript" src="--><!--/default/initjs"></script>-->
+
+    <script type="text/javascript" src="__CSS__/gdt/hz/js/index_1.js"></script>
+    <!--<script type="text/javascript" src="/common/fastclick.js?v=--><!--"></script>-->
+    <!---->
+    <!---->
+    <script type="text/javascript" src="__CSS__/gdt/hz/js/report_1.js"></script>
+    <!--<script type="text/javascript" src="__CSS__/gdt/hz/js/maya-1.2_1.js"></script>-->
+    <script type="text/javascript" src="__CSS__/gdt/hz/js/stats_1.js" name="MTAH5" sid="500495152"  ></script>
+</body>
+</html>
+</html>

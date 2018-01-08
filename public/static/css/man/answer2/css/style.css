@@ -1,0 +1,277 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Wenquanyi Micro Hei,Arial,sans-serif;
+}
+
+.contain_box{
+	max-width: 740px;
+	margin: 0 auto;
+}
+
+.main_title{
+	padding: 0px 10px;
+}
+
+h2{
+	font-size: 24px;
+	font-weight: 400;
+	color: #555;
+}
+
+.header_img img{
+	width: 100%;
+	padding: 10px 0px;
+}
+
+.floor_01{
+	overflow: hidden;
+	padding-bottom: 10px;
+}
+
+.floor_list{
+	padding: 0px 10px;
+}
+
+.floor_img{
+	float: left;
+	margin-right: 10px;
+}
+
+.floor_name{
+	line-height: 36px;
+	font-size: 16px;
+	color: #6f6f6f;
+}
+
+.floor_name .floor_num{
+	line-height: 18px;
+    text-align: center;
+    background: #3381e3;
+    color: #fff;
+    padding: 0 4px;
+    border-radius: 2px;
+}
+
+p{
+	font-size: 16px;
+	color: #555;
+	line-height: 1.7;
+	text-align: justify;
+	padding-bottom: 10px;
+}
+
+.floor_02{
+	line-height: 24px;
+	color: #8e8e8e;
+}
+
+/* 相关问题 */
+.about_que{
+	padding-top: 20px; 
+}
+
+.about_head,
+.other_head{
+	color: #626262;
+    line-height: 32px;
+    font-size: 14px;
+    background-color: #e9eef1;
+    padding: 0px 14px;
+}
+
+.que_list hr{
+	border: none;
+	border-top:1px solid #eee;
+}
+.que_01{
+	color: #555;
+    font-size: 16px;
+    line-height: 1.7;
+    padding: 10px;
+}
+
+.blue{
+	color: #3592f5;
+}
+
+/* 其它回答 */
+.other{
+	padding: 10px;
+	border-bottom: 1px solid #eee;
+}
+.other_01{
+	overflow: hidden;
+	padding-bottom: 10px;
+}
+
+.other_img{
+	float: left;
+	margin-right: 10px;
+}
+
+.other_name{
+	line-height: 36px;
+	font-size: 16px;
+	color: #6f6f6f;
+	font-weight: 700;
+}
+
+.weixin{
+	color: red;
+	background-color: yellow;
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.add-box {
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+}
+
+.add-box .add-bg {
+    background-color: #eeeeee;
+    max-width: 720px;
+    margin: 0 auto;
+    overflow: hidden;
+    border: 1px solid #dedddd;
+}
+
+.add-box .add-bg .add-img {
+    width: 50px;
+    height: auto;
+    padding: 10px;
+    float: left;
+}
+
+.add-box .add-bg .add-img img {
+    width: 100%;
+}
+
+.add-box .add-bg .add-add {
+    float: left;
+    text-align: left;
+    padding-top: 5px;
+}
+
+.add-box .add-bg .add-add span {
+    color: #333;
+    font-size: 18px;
+}
+
+.add-box .add-bg .add-add span span {
+    background-color: yellow;
+    font-size: 18px;
+    color: red;
+    font-weight: 600;
+}
+
+.add-box .add-bg .add-weixin {
+    padding: 10px;
+}
+
+.add-box .add-bg .add-weixin .add-go {
+    padding: 10px 15px;
+    background-color: #3c9f0e;
+    float: right;
+    color: #fff;
+    border-radius: 8px;
+    box-shadow: 1px 1px 3px #888888;
+}
+
+.add-box .add-bg .add-weixin .add-go a {
+    font-size: 14px;
+    color: #fff;
+}
+
+.click {
+    position: fixed;
+    right: 50%;
+    margin-right: -440px;
+    top: 8%;
+}
+
+@media screen and (max-width:720px) {
+    .click {
+        right: 2%;
+        margin-right: 0px;
+        top: 8%;
+    }
+}
+
+.click img {
+    width: 60px;
+    height: 60px;
+}
+
+@media screen and (max-width:720px) {
+    .click img {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    transform: translate3d(-50%, -50%, 0px);
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 10px 0px;
+    display: none;
+    box-shadow: 1px 1px 3px #424242;
+    text-align: center;
+    color: #656565;
+    z-index: 2;
+}
+
+.popup .first span .spance,
+.popup .open span .spance {
+    letter-spacing: 5px;
+}
+
+.popup .close {
+    padding: 0 10px;
+    overflow: hidden;
+    color: #dd2736;
+}
+
+.popup .close span {
+    float: right;
+}
+
+.popup .add {
+    text-align: center;
+    background-color: #e13f94;
+    padding: 8px 0px;
+    margin: 15px 0px;
+}
+
+.popup .add span {
+    line-height: 40px;
+    font-size: 28px;
+    color: red;
+    background-color: yellow;
+}
+
+.popup .open {
+    text-align: center;
+    color: #666;
+}
+
+.popup .liwu {
+    text-align: center;
+    color: #999;
+    padding-bottom: 20px;
+    margin-top: 15px;
+}
+
+.popup .liwu a {
+    font-size: 18px;
+    color: #d5271e;
+    text-decoration: underline;
+}

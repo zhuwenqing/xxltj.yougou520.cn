@@ -1,0 +1,119 @@
+{extend name="base" /}
+{block name="body"}
+<header class="header" id="top">
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Navbar-Header -->
+                    <div class="navbar-header">
+                        <!-- Text-Logo -->
+                        <a href="" class="navbar-brand scrollto" title="">
+                            <img style="height:62px;" alt="" src="__STATIC__/images/logo.png">
+                        </a>
+                    </div><!-- /End Navbar-Header -->
+
+                    {if condition = :session('user_id')}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <font color="#FF0000"><div><a href="{:url('wechat/user/index')}">用户中心</a> | <a href="javascript:">{:session('user_name')}</a> | <a href="{:url('wechat/login/logout')}">退出</a></div></font>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><font color="#FF0000"><a  href="{:url('wechat/account/index')}">微信录入</a></font></li>
+                    </ul>
+
+                    {else/}
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <font color="#FF0000"><a  href="{:url('wechat/regist/index')}">注册</a></font> |
+                            <font color="#FF0000"><a  href="{:url('wechat/login/index')}">登录</a></font>
+                        </li>
+                    </ul>
+                    {/if}
+
+                    <!-- Navbar-Collapse -->
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown active" ><a  href="{:url('wechat/index/index')}">首页</a></li>
+                        <li class="dropdown "><a  href="{:url('wechat/wechat/index')}">微信编辑器<span class="caret"></span></a></li>
+                        <li class="dropdown active"><a  href="{:url('wechat/video/index')}">视频专区<span class="caret"></span></a></li>
+                    </ul>
+                    <!-- /End Navbar-Collapse -->
+                </div>
+                <!-- /End Col -->
+            </div><!-- /End Row -->
+        </div><!-- /End Container -->
+    </nav>
+</header>
+
+<!--添加客服微信号-->
+<div style="font-size: 20px;font-weight: bold;margin-top: 20px;"><center>好友微信号录入</center></div>
+<div style="width: 800px;margin: 20px auto;">
+    <form class="layui-form" action="{:url('account/add_account')}" method="post">
+        <div class="layui-form-item">
+            <label class="layui-form-label">客服微信号</label>
+            <div class="layui-input-block">
+                <select name="fid">
+                    <option value=""></option>
+                    {foreach name="data" item="v"}
+                    <option value="{$v.id}">{$v.username} ({$v.wechat_name}) {$v.name}</option>
+                    {/foreach}
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">微信号</label>
+            <div class="layui-input-block">
+                <input type="text" name="wechat_name" required placeholder="请输入微信号" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">微信名</label>
+            <div class="layui-input-block">
+                <input type="text" name="username" required placeholder="请输入微信名" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">手机号</label>
+            <div class="layui-input-block">
+                <input type="text" name="mobile" placeholder="请输入手机号(选填)" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">客户类型</label>
+            <div class="layui-input-block">
+                <select name="c_type">
+                    <option value=""></option>
+                    {foreach name="channel_list" item="vo"}
+                    <option value="{$vo.id}">{$vo.name}</option>
+                    {/foreach}
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">邮箱</label>
+            <div class="layui-input-block">
+                <input type="email" name="email" required placeholder="请输入邮箱(选填)" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="*">立即提交</button>
+                <!--<button class="layui-btn">立即提交</button>-->
+                <button type="button" class="layui-btn layui-btn-primary" onclick="index();">返回</button>
+            </div>
+        </div>
+    </form>
+</div>
+{/block}
+
+{block name="js"}
+<script type="text/javascript">
+    function index(){
+        window.location.href="{:url('wechat/account/index')}";
+    }
+</script>
+{/block}

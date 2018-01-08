@@ -1,0 +1,75 @@
+html,body{
+    padding:0;margin:0;background:#fafbfc;font-size: 16px;color:#555;
+}
+.main{
+    max-width:960px;margin:0 auto;background:#fff;
+}
+.top{
+    width:100%;height:60px;line-height: 60px;font-weight: 600;background:#fafbfc;border-bottom:1px #f0f1f2 solid;
+}
+.top img{
+    width:36px;height:36px;float:left;margin:12px;
+}
+.title{
+    width:100%;background:#fff;overflow: auto;
+}
+.title b{
+    display:inline-block;margin:8px;color:#c00000;font-weight: bold;
+}
+.title p{
+    margin:0;padding:0 10px;color:#3361a7;text-indent: 8px;line-height: 20px;
+}
+.title span{
+    font-size: 80%;color:#c8c9d6;
+}
+.title img{
+    width:38px;height:38px;float:left;
+}
+.cont{
+    width:100%;background:#fff;border-bottom:1px #eaebec solid;
+}
+.cont p{
+    padding:0 15px;margin:25px 0;line-height: 25px;font-size: 18px;padding-bottom:30px;
+}
+.cont p span{
+    background:#cc66cc;
+}
+.cont p b{
+    color:#c00000;
+}
+.cont p.img{
+    text-align: center;
+}
+.cont p.img img{
+    max-width:100%;
+}
+.pl{
+    padding:10px;background:#f5f7fa;
+}
+.pl_item{
+    border-bottom:1px solid #eaebec;margin-bottom:10px;
+}
+.pl_item p{
+    padding-left:48px;line-height: 25px;
+}
+.pl_item .head{
+    padding:0;margin-top:0;text-indent: 10px;color:#3361a7;margin-bottom:20px;
+}
+.pl_item .head img{
+    float:left;
+}
+.pl_item .head span{
+    font-size: 80%;color:#c8c9d5;
+}
+.pl_item .huifu .name{
+    color:#3361a7;
+}
+.pl_item .huifu .time{
+    color:#c5c9cd;font-size: 80%;
+}
+.foot{
+    padding:10px;background:#f5f7fa;font-size: 15px;line-height: 20px;margin-bottom:60px;
+}
+.foot span{
+    color:#3361a7;
+}

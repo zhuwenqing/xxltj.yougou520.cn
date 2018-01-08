@@ -1,0 +1,63 @@
+{extend name="base" /}
+{block name="body"}
+
+<header class="header" id="top">
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Navbar-Header -->
+                    <div class="navbar-header">
+                        <!-- Text-Logo -->
+                        <a href="" class="navbar-brand scrollto" title="">
+                            <img style="height:62px;" alt="" src="__STATIC__/images/logo.png">
+                        </a>
+                    </div><!-- /End Navbar-Header -->
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><font color="#FF0000">微信</font></li>
+                    </ul>
+
+                    <!-- Navbar-Collapse -->
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown " ><a  href="{:url('wechat/index/index')}">首页</a></li>
+                        <li class="dropdown "><a  href="{:url('wechat/wechat/index')}">微信编辑器</a></li>
+                        <li class="dropdown active"><a  href="{:url('wechat/video/index')}">视频专区</a></li>
+                    </ul>
+                    <!-- /End Navbar-Collapse -->
+                </div>
+                <!-- /End Col -->
+            </div><!-- /End Row -->
+        </div><!-- /End Container -->
+    </nav>
+</header>
+
+
+<form style="margin-top: 50px; margin-bottom: 50px; min-height: 72%;" action="{:url('wechat/Video/upload')}" method="post" enctype="multipart/form-data">
+    <div class="me-info">
+        <label class="info-tl">标题：</label>
+        <input class="info-in" type="text" name="title" value="" required  lay-verify="required" placeholder="请输入标题" ></br>
+        <br/>
+        <label class="info-tl">视频：</label>
+        <div>
+            <a class="info-upload" href=""><input  type="file" name="video" >点击这里上传文件 </a>
+        </div>
+        <br/>
+        <label class="info-tl">缩略图(截图文案或者上传一张文案的图片)：</label>
+        <a class="info-upload" href="">
+            <input  type="file" name="thumb" >浏览</br>
+        </a>
+        <br/>
+        <br/>
+        <br/>
+        <input class="info-btn" type="submit" value="提交数据">
+    </div>
+
+
+
+
+</form>
+
+
+{/block}

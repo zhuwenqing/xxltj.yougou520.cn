@@ -1,0 +1,91 @@
+{extend name="base" /} {block name="body"}
+<style>
+    .layui-form-checkbox {
+        height: 38px;
+        line-height: 37px;
+        margin: 0;
+    }
+    
+    .layui-form-pane .layui-form-checkbox {
+        margin: 0;
+    }
+</style>
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class=""><a href="{:url('admin/old_adcount/detail',['count_url'=>$count_url])}">统计详情</a></li>
+            <li class=""><a href="{:url('admin/old_adcount/wechat_count',['count_url'=>$count_url])}">复制次数</a></li>
+            <li class="layui-this">地域统计</li>
+            <li class=""><a href="{:url('admin/old_adcount/advdata_page',['count_url'=>$count_url])}">点击量/进线</a></li>
+            <!-- <li class=""><a href="javascript:void(0)" onclick="window.history.go(-1);">返回</a></li> -->
+        </ul>
+        <div class="layui-tab-content">
+
+            <form class="layui-form layui-form-pane" action="{:url('admin/old_adcount/address_count',['count_url'=>$count_url])}" method="get">
+                <div class="layui-inline">
+                    <label class="layui-form-label">关键字</label>
+                    <div class="layui-input-inline">
+                        <select name="area">
+                            {foreach name='search_list' item='vo'}
+                            <option value="{$vo.value}" {if condition="$area==$vo.value"} selected="selected"{/if}>{$vo.name}</option>
+                            {/foreach}
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <div class="layui-input-inline">
+                        <input type="text" name="keyword" value="{$keyword}" placeholder="请输入关键词" class="layui-input">
+                    </div>
+                </div>
+                &nbsp;&nbsp;&nbsp;
+                <div class="layui-inline">
+                    <label class="layui-form-label">开始时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="start_time" value="{$start_time}" class="layui-input datetime">
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">结束时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="end_time" value="{$end_time}" class="layui-input datetime">
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <button class="layui-btn">搜索</button>
+                </div>
+            </form>
+            <hr>
+
+            <form action="" method="post" class="ajax-form">
+                <div class="layui-tab-item layui-show">
+                    <table class="layui-table">
+                        <thead>
+                            <tr>
+                                <th>地区</th>
+                                <th>总访问ip量</th>
+                                <th>独立访问ip量</th>
+                                <th>总复制ip量</th>
+                                <th>独立复制ip量</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {foreach name="count_ip_arr" item="v"}
+                            <tr>
+                                <td>{if condition="!empty($v['province'])"}{$v.province}{elseif condition="!empty($v['city'])" }{$v.city}{else /}其他{/if}</td>
+                                <td>{$v.count}</td>
+                                <td>{$v.ip_count}</td>
+                                <td>{if condition="isset($v['copy_count'])"}{$v.copy_count}{/if}</td>
+                                <td>{if condition="isset($v['ind_count_ip'])"}{$v.ind_count_ip}{/if}</td>
+                            </tr>
+                            {/foreach}
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{/block}

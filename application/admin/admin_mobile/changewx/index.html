@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>广告管理后台</title>
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=2.0">
+	<link rel="stylesheet" type="text/css" href="__JS__/mobile/js/mdui/css/mdui.min.css">
+	<link rel="stylesheet" type="text/css" href="__JS__/mobile/css/style.css">
+	<link rel="stylesheet" type="text/css" href="__JS__/mobile/css/index.css">
+	<script type="text/javascript" src="__JS__/mobile/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="__JS__/mobile/js/mdui/js/mdui.min.js"></script>
+	<script type="text/javascript" src="__JS__/mobile/js/main.js"></script>
+	<script type="text/javascript" src="__JS__/mobile/js/index.js"></script>
+	<script>
+		window.close();
+	</script>
+</head>
+
+<body>
+	<!-- <div class="option">
+
+	</div> -->
+	<div class="main body">
+		<div class="mdui-toolbar mdui-color-teal title">
+			<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
+			<span class="mdui-typo-title">换微信号名单</span>
+			<div class="mdui-toolbar-spacer"></div>
+			<!-- <a href="javascript:;" class="mdui-btn mdui-btn-icon mdui-ripple	"><i class="mdui-icon material-icons">search</i></a> -->
+			<a href="" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon material-icons">refresh</i></a>
+			<a href="javascript:;" class="mdui-btn mdui-btn-icon mdui-ripple"  mdui-menu="{target: '#option_menu'}"><i class="mdui-icon material-icons">more_vert</i></a>
+			<ul class="mdui-menu" id="option_menu">
+				<li class="mdui-menu-item">
+					<a href="{:url('admin/changewx/add')}" class="mdui-ripple">新增链接</a>
+				</li>
+				<li class="mdui-divider"></li>
+				<li class="mdui-menu-item">
+					<a href="javascript:;" class="mdui-ripple">退出</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="content">
+			<div class="filter">
+	            <form action="{:url('admin/changewx/index')}" method="get">
+	                <!-- <select name="cid" class="select_class">
+                        <option value="0">全部</option>
+                        {foreach name="category_level_list" item="vc"}
+                        <option value="{$vc.id}" {if condition="$cid==$vc.id"} selected="selected"{/if}>{neq name="vc.level" value="1"}|{php}for($i=1;$i<$vc['level'];$i++){echo ' ----';}{/php}{/neq} {$vc.name}</option>
+                        {/foreach}
+                    </select> -->
+                    <input class="mdui-textfield-input" name="keyword"  type="search" placeholder="请输入关键词" value="{$keyword}"/>
+                    <select class="mdui-select select_class" mdui-select name="cid">
+                      <option value="0">全部</option>
+					   {foreach name="category_level_list" item="vc"}
+                        <option value="{$vc.id}" {if condition="$cid==$vc.id"} selected="selected"{/if}>{neq name="vc.level" value="1"}|{php}for($i=1;$i<$vc['level'];$i++){echo ' ----';}{/php}{/neq} {$vc.name}</option>
+                        {/foreach}
+					</select>
+					<button class="mdui-btn mdui-ripple mdui-color-teal mdui-float-right">搜索</button>
+					
+	            </form>
+			</div>
+			<div class="result">
+                <div class="r_head">
+                    <span>结果展示:</span>
+                </div>
+                <div  class="r_body">
+                	<div class="mdui-panel mdui-panel-gapless mdui-typo" mdui-panel>
+                    {foreach name="url_list" item="vo"}
+                        <!-- <div class="item">
+	                        <p>
+		                        <span class="id">{$vo.id}</span>{$vo.change_url}
+		                    </p>
+		                    <div class="more" data-id="{$vo.id}"></div>
+		                    <div style="clear:both;"></div>
+	                        <div class="detail" data-id="{$vo.id}">
+	                        	<b>备注：</b><br>{$vo.remark}
+	                        </div>
+	                    </div> -->
+						<div class="mdui-panel-item">
+							<div class="mdui-panel-item-header padding_0">
+								  <div class="mdui-panel-item-title title_id">{$vo.id}</div>
+								  <div class="mdui-panel-item-summary">{$vo.change_url}</div>
+								  <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+							</div>
+							<div class="mdui-panel-item-body padding_0">
+								  <blockquote>
+									    <p class="code_show">识别码: <span>{$vo.code}</span></p>
+									    <footer>{$vo.remark}</footer>
+								  </blockquote>
+								  <div class="mdui-panel-item-actions btn_class">
+									    <button class="mdui-btn mdui-ripple show_code mdui-color-teal"  mdui-dialog="{target: '#show{$vo.code}'}">查看代码</button>
+									    <a href="{:url('admin/changewx/edit',['id'=>$vo['id']])}" class="mdui-btn mdui-ripple edit_btn mdui-color-teal">编辑</a>
+								  </div>
+							</div>
+							<div class="mdui-dialog" id="show{$vo.code}">
+								<div class="mdui-dialog-title">调用代码</div>
+								<div class="mdui-dialog-content calling_code">&lt;script src=&quot;https://tongji.yougou520.cn/api/change_wx/get_wechat_num_qrcode2.html?code=<span class="mdui-text-color-red">{$vo.code}</span>&quot; language=&quot;JavaScript&quot;&gt;&lt;/script&gt;</div>
+								<div class="mdui-dialog-actions">
+									<button class="mdui-btn mdui-ripple" mdui-dialog-close>关闭</button>
+								</div>
+							</div>
+						</div>
+                    {/foreach}
+                    </div>
+
+
+
+
+
+
+	
+
+
+
+                </div>
+            </div>
+		</div>
+		
+	</div>
+</body>
+</html>

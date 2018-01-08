@@ -1,0 +1,24 @@
+{extend name="base" /}
+{block name="body"}
+
+
+
+
+<form action="{:url('wechat/Video/upload')}" method="post" enctype="multipart/form-data">
+    <div class="we-info">
+        <label >标题</label>
+        <input type="text" name="title" value="" required  lay-verify="required" placeholder="请输入标题" ></br>
+        <label >缩略图(截图文案或者上传一张文案的图片)：</label>
+        <input class="inp_zj2" type="file" name="thumb" ></br>
+        <label >视频</label>
+        <input type="file" name="video" > </br>
+
+    </div>
+
+
+    <input type="submit" value="提交数据">
+
+</form>
+
+
+{/block}

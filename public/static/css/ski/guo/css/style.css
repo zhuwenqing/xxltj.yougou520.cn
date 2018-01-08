@@ -1,0 +1,76 @@
+body,html{
+    padding:0;margin:0;font-family: 微软雅黑;color:#000;
+}
+.main{
+    margin:0 auto;padding:25px;max-width:640px;
+}
+img{
+    max-width:100%;
+}
+.top{
+    margin-bottom:20px;
+}
+.top h2{
+    font-weight: 400;letter-spacing: 2px;color:#000;margin-bottom: 5px;
+}
+.top span{
+    font-size: 14px;color:#666;
+}
+.top span .name{
+    color:#607fa6;
+}
+.p1{
+    line-height: 36px;text-indent: 5px;color:#666;
+}
+.p1 img{
+    float:left;height:36px;
+}
+.p2{
+    color:#666;line-height: 16px;
+}
+.p2 span{
+    color:#fff; background:#aa0000;padding:2px 10px;font-size: 12px;margin:0 5px;border-radius:100px;
+}
+.p3{
+    letter-spacing: 2px;font-size: 26px;
+}
+.p4{
+    color:#000;font-size: 16px;letter-spacing: 2px;text-align: justify;line-height: 25px;
+}
+.p4 .wx{
+    color:#fff; background:#ff4f79;padding:0 5px;
+}
+.p5{
+    text-align: center;color:#fff;
+}
+.p5 b{
+    background:#ff4f79;font-size: 18px;padding:0 5px;
+}
+.p6{
+    font-weight: 400;font-size: 16px;text-align: justify;line-height: 25px;color:#333;
+}
+.p6 b{
+    text-decoration: underline;
+}
+.p7{
+    font-weight: 600;font-size: 18px;color:#333;
+}
+.p8{
+    margin:5px 0;
+}
+.p6 .wx{
+    color:#fff; background:#ff4f79;
+}
+.p8 b{
+    background:#a3a9c5;color:#fff;padding:10px 25px;border-radius: 100px;font-weight: 400;letter-spacing: 3px;
+}
+.p6 .info{
+    font-size: 80%;
+}
+.zan{
+    margin:0;margin-top:-40px;margin-bottom:15px;font-weight: 400;font-size: 16px;text-align: justify;line-height: 25px;
+    color:#333;text-align: right;border-bottom: 1px #ddd solid;
+}
+.p9{
+    color:#006bd8;border:1px #e0e0e0 solid;background:#fbfbfb;font-size: 16px;padding:10px 0;border-radius:100px;
+}

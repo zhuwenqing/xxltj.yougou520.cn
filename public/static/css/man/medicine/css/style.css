@@ -1,0 +1,552 @@
+body {
+    color: #003;
+}
+
+.we1 {
+    background: #e50150 none repeat scroll 0 0;
+    color: #ffffff;
+    float: left;
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+    padding-top: 0;
+    position: relative;
+    text-align: center;
+}
+
+.wechat {
+    background: #fff none repeat scroll 0 0;
+    border-radius: 20px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+    color: #666;
+    display: none;
+    left: 10%;
+    padding: 30px 0;
+    position: fixed;
+    right: 10%;
+    text-align: center;
+    top: 20%;
+    width: 80%;
+    z-index: 5000;
+}
+
+.zmtWechat {
+    bottom: 0;
+    height: 40px;
+    max-width: 740px;
+    position: fixed;
+    width: 100%;
+}
+
+.wechatIcon {
+    vertical-align: middle;
+    width: 30px;
+}
+
+.we1 {
+    background: #e50150;
+    color: #ffffff;
+    float: left;
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+    padding-top: 0;
+    position: relative;
+    text-align: center;
+}
+
+.we1 a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.we2 {
+    background: #302825;
+    color: #ffffff;
+    float: left;
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    padding-top: 0;
+    width: 60%;
+    text-align: center;
+}
+
+.zmtWechat {
+    bottom: 0;
+    height: 50px;
+    position: fixed;
+    width: 100%;
+}
+
+.xx {
+    vertical-align: middle;
+    width: 240px;
+}
+
+.wechatBox {
+    display: none;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+}
+
+.wechatimg {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+    color: #666;
+    display: none;
+    left: 10%;
+    position: fixed;
+    right: 10%;
+    text-align: center;
+    top: 20%;
+    width: 80%;
+    z-index: 5000;
+}
+
+.wechatimg img {
+    width: 100%;
+}
+
+.wechat .p1 {
+    font-size: 16px;
+}
+
+.wechat .p2 {
+    font-size: 23px;
+}
+
+.wechat .wxid {
+    background-color: #f62796;
+    color: #fff;
+    font-size: 40px;
+    margin: 30px 0;
+    padding: 10px;
+}
+
+.wxid {
+    background-color: #f62796;
+    color: #fff;
+    font-size: 40px;
+    margin: 30px 0;
+    padding: 10px;
+}
+
+#flow_wx {
+    font-size: .8em;
+    position: fixed;
+    right: 0.5em;
+    top: 40%;
+}
+
+#flow_wx #wx_icon {
+    width: 5em;
+    height: 5em;
+    background: url(images/wx_icon.png) no-repeat 0 0;
+    background-size: 18em;
+}
+
+#flow_wx #wx_copy {
+    width: 18em;
+    height: 12em;
+    background: url(images/wx_icon.png) no-repeat 0 -5.8em;
+    background-size: 22em;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -9em;
+    margin-top: -5em;
+    text-align: center;
+    padding: 3em 0 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: none;
+}
+
+#flow_wx #wx_copy span {
+    font-size: 1.4em;
+    color: #fff;
+    background: #086116;
+    padding: 0 0.2em 0.1em;
+}
+
+#flow_wx #wx_copy em {
+    font-size: 1em;
+    line-height: 1em;
+    color: #666;
+    margin: 0.8em 0;
+    display: inline-block;
+}
+
+#flow_wx #wx_copy i {
+    width: 1.5em;
+    height: 1.5em;
+    background: url(images/wx_icon.png) no-repeat -9.2em 0;
+    background-size: 22em;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#flow_wx #wx_copy b {
+    font-size: 0.8em;
+    color: #9d9d9d;
+    margin-left: 0.5em;
+}
+
+#flow_wx #wx_copy p {
+    position: absolute;
+    right: 1.5em;
+    top: 1em;
+    width: 2em;
+    height: 2em;
+}
+
+.umus {
+    display: block;
+    position: absolute;
+    right: 8px;
+    text-align: center;
+    top: 6px;
+}
+
+.umus a {
+    color: rgb(255, 255, 255);
+    display: block;
+    float: right;
+    height: 20px;
+    margin-left: 1px;
+    overflow: hidden;
+    padding: 7px;
+    width: 24px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: -apple-system-font, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    font-size: 16px;
+}
+
+.cl {
+    clear: both;
+}
+
+.red {
+    color: #FF0000;
+    font-weight: 700;
+}
+
+.header {
+    max-width: 720px;
+    margin: auto;
+    background: #07B3E3;
+    padding: 10px 8px;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: left;
+}
+
+.nav {
+    max-width: 720px;
+    margin: auto;
+    font-size: 12px;
+    color: #999;
+    padding: 8px 6px;
+}
+
+.question {
+    max-width: 720px;
+    margin: auto;
+    border-top: 1px solid #E3E3E7;
+    border-bottom: 1px solid #E3E3E7;
+}
+
+.question .question-status {
+    float: left;
+    width: 4%;
+    background: #1FBAE6;
+    color: #fff;
+    font-size: 14px;
+    padding: 10px;
+}
+
+.question .question-info {
+    float: left;
+    margin-left: 10px;
+    width: 80%;
+}
+
+.question .question-info .question-title {
+    color: #FF0000;
+    margin-top: 10px;
+}
+
+.question .question-info .question-author {
+    color: #999;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.question-desc {
+    max-width: 720px;
+    margin: auto;
+    padding: 10px 8px;
+    border-bottom: 10px solid #E3E3E7;
+    line-height: 180%;
+}
+
+.answer {
+    max-width: 720px;
+    margin: auto;
+}
+
+.answer .doc-answer-title {
+    padding: 10px 8px;
+    font-size: 16px;
+    font-weight: 600;
+    border-bottom: 1px solid #07B3E3;
+}
+
+.doc-answer .doc-icon {
+    float: left;
+    width: 60px;
+}
+
+.doc-answer .doc-info {
+    margin-top: 10px;
+}
+
+.doc-answer .doc-info .doc-icon img {
+    display: block;
+    margin: 0 auto;
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+}
+
+.doc-answer .doc-info .doc-desc {
+    float: left;
+    line-height: 20px;
+}
+
+.doc-answer .doc-info .doc-desc .doc-title {
+    font-size: 12px;
+    color: #888;
+}
+
+.doc-answer-content {
+    padding: 10px;
+    line-height: 180%;
+}
+
+.doc-like,
+.author-comment .author-comment-like {
+    color: #333;
+    padding: 10px;
+    border-top: 1px solid #E3E3E7;
+    border-bottom: 1px solid #E3E3E7;
+}
+
+.doc-answer-content img {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.author-comment .author-info {
+    font-size: 16px;
+    color: #02879f;
+    padding: 10px;
+    border-top: 1px dashed #000;
+    padding-bottom: 0px;
+}
+
+.author-comment .author-comment-content {
+    padding: 10px;
+    line-height: 180%;
+}
+
+.comment .title {
+    padding: 10px 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.comment ul {
+    list-style: none;
+}
+
+.comment .lz-msg .icon {
+    float: left;
+    width: 60px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.comment .lz-msg .icon img {
+    display: block;
+    margin: 0 auto;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.comment .lz-msg .lz-info {
+    line-height: 20px;
+}
+
+.comment ul li {
+    margin-top: 10px;
+}
+
+.comment .lz-msg .lz-info .lz-name {
+    color: #02879f;
+}
+
+.comment .lz-msg .lz-info .lz-level {
+    color: #888;
+    font-size: 12px;
+}
+
+.comment .lz-content {
+    padding: 10px;
+    border-bottom: 1px solid rgb(188, 192, 197);
+    line-height: 180%;
+}
+
+.comment .lz-content img {
+    display: block;
+    width: 100%;
+}
+
+.buchong {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #000;
+}
+
+.buchong .buchong-title {
+    font-weight: 600;
+}
+
+.buchong .buchong-content {
+    text-indent: 2em;
+}
+
+.recomment {
+    background: #f1f1f1;
+    padding: 5px 10px;
+    margin-top: 10px;
+}
+
+.recomment .recomment-name {
+    color: #02879F;
+    margin-top: 8px;
+    line-height: 150%;
+}
+
+.footer {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: #C2C2C9;
+    color: #000;
+}
+
+.touch-platform {
+    background: #07B3E3;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.touch-platform a {
+    display: block;
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 6px;
+    width: 70px;
+    margin: 0 auto;
+    text-align: center;
+    text-decoration: none;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.footer p {
+    color: #CCCCCC;
+}
+
+.footer br {
+    color: #CCC;
+}
+
+.footer-add {
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    z-index: 99999;
+}
+
+.footer-add .foot-box {
+    max-width: 720px;
+    background-color: #fff;
+    overflow: hidden;
+    margin: 0 auto;
+    border: 1px solid #999;
+}
+
+.footer-add .foot-box .foot-img {
+    width: 20%;
+    max-width: 60px;
+    float: left;
+}
+
+.footer-add .foot-box .foot-img img {
+    width: 100%;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.footer-add .foot-box .foot-txt {
+    padding-top: 10px;
+    padding-left: 10px;
+    float: left;
+}
+
+.footer-add .foot-box .foot-txt span {
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+.footer-add .foot-box .foot-txt span .weixin {
+    color: red;
+    background-color: yellow;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.footer-add .foot-box .add {
+    float: right;
+    padding-top: 10px;
+    padding-right: 5px;
+    line-height: 36px;
+}
+
+.footer-add .foot-box .add a {
+    color: #fff;
+    background-color: red;
+    padding: 8px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 20px;
+}

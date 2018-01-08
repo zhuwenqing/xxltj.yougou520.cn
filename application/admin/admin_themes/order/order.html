@@ -1,0 +1,83 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class="layui-this"><a href="{:url('admin/blog/order')}">订单管理</a></li>
+            <li class=""><a href="{:url('admin/blog/order',['show'=>1])}">显示删除的订单</a></li>
+        </ul>
+        <div class="layui-tab-content">
+
+
+
+            <form class="layui-form layui-form-pane" action="{:url('admin/blog/order')}" method="get">
+                <div class="layui-inline">
+                    <label class="layui-form-label">关键词</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="keyword" value="{$keyword}" placeholder="请输入关键词" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn">搜索</button>
+                </div>
+            </form>
+            <hr>
+
+            <form action="" method="post" class="ajax-form">
+                  <div class="layui-tab-item layui-show">
+                    <table class="layui-table">
+                        <thead>
+                        <tr>
+                            <th style="width: 30px;">ID</th>
+                            <th>用户</th>
+                            <th>购买套餐</th>
+                            <th>手机号</th>
+                            <th>发货</th>
+                            <th>快递单号</th>
+                            <th>地址</th>
+                            <th>下单时间</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {foreach name="order_list" item="vo"}
+                        <tr>
+
+                            <td>{$vo.id}</td>
+                            <td>{$vo.name}</td>
+                            <td>{$vo.pro}</td>
+                            <td>{$vo.phone}</td>
+                            <td>
+                                {if $vo.statue eq 0}
+                                未发货
+                                {elseif $vo.statue eq 1}
+                                已发货
+                                {elseif $vo.statue eq 2}
+                               已收货
+                                {elseif $vo.statue eq 3}
+                                已结单
+                                {else}
+                               已删除
+                                {/if}
+                            </td>
+                            <td>{$vo.express}</td>
+                            <td>{$vo.addr}</td>
+                            <td>{$vo.create_time|date="Y-m-d H:i:s",###}</td>
+                            <td>
+                                <a href="{:url('admin/blog/oredit',['id'=>$vo['id']])}" class="layui-btn layui-btn-normal layui-btn-mini">编辑</a>
+                                <a href="{:url('admin/blog/ordelete',['id'=>$vo['id']])}" class="layui-btn layui-btn-danger layui-btn-mini ajax-delete">删除</a>
+                            </td>
+                        </tr>
+                        {/foreach}
+                        </tbody>
+                    </table>
+                    <!--分页-->
+                    {$order_list->render()}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{/block}

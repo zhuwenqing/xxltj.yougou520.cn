@@ -1,0 +1,172 @@
+{extend name="base" /} {block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">统计管理</li>
+            <li class=""><a href="{:url('admin/adcount/add')}">添加域名</a></li>
+        </ul>
+        <div style="position:absolute;right:10px;margin-top:5px;"><a href="{:url('admin/adcount/index')}" style="color:#CD2626;">切换新版数据</a></div>
+        <div class="layui-tab-content">
+            <form class="layui-form layui-form-pane" id="adcount_order" action="{:url('admin/old_adcount/index')}" method="get">
+                <div class="layui-inline">
+                    <label class="layui-form-label">分类</label>
+                    <div class="layui-input-inline">
+                        <select name="cid">
+                            <option value="0">全部</option>
+                            {foreach name="category_level_list" item="vc"}
+                            <option value="{$vc.id}" {if condition="$cid==$vc.id"} selected="selected"{/if}>{neq name="vc.level" value="1"}|{php}for($i=1;$i<$vc['level'];$i++){echo ' ----';}{/php}{/neq} {$vc.name}</option>
+                            {/foreach}
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">关键词</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="keyword" value="{$keyword}" placeholder="请输入关键词" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn">搜索</button>
+                </div>
+                <br>
+                <br>
+
+                <div class="layui-inline">
+                    <button class="layui-btn layui-btn-primary layui-btn-small sort">默认排序</button>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layui-btn-primary layui-btn-small count_ip_num">按独立访问IP排序</button>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layui-btn-primary layui-btn-small count_copy_ip_num">按独立复制IP排序</button>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layui-btn-primary layui-btn-small count_visit">按总访问ip排序</button>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layui-btn-primary layui-btn-small count_copy_num">按总复制ip排序</button>
+                </div>
+
+            </form>
+            <hr>
+
+            <!--             <form class="layui-form layui-form-pane" id="adcount_order" action="{:url('admin/adcount/index')}" method="get">
+                <div class="layui-inline">
+                    <button class="layui-btn layui-btn-primary layui-btn-small sort">默认排序</button>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layui-btn-primary layui-btn-small count_ip_num">按独立访问IP排序</button>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layui-btn-primary layui-btn-small count_copy_ip_num">按独立复制IP排序</button>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layui-btn-primary layui-btn-small count_visit">按总访问ip排序</button>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layui-btn-primary layui-btn-small count_copy_num">按总复制ip排序</button>
+                </div>
+            </form> -->
+
+            <div class="layui-tab-item layui-show">
+                <table class="layui-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 30px;">ID</th>
+                            <th style="width: 30px;">排序</th>
+                            <th>统计域名</th>
+                            <th>渠道</th>
+                            <th>独立访问ip量</th>
+                            <th>独立复制ip量</th>
+                            <th>总访问ip量</th>
+                            <th>总复制ip量</th>
+                            <th>总点击量</th>
+                            <th>总进线</th>
+                            <th>备注</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {foreach name="url_list" item="vo"}
+                        <tr>
+                            <td>{$vo.id}</td>
+                            <td>{$vo.sort}</td>
+                            <td><a target="_blank" href="{$vo.count_url}">{$vo.count_url}</a></td>
+                            <td>{$vo.name}</td>
+                            <td>{$vo.count_ip_num}</td>
+                            <td>{$vo.count_copy_ip_num}</td>
+                            <td>{$vo.count_visit}</td>
+                            <td>{$vo.count_copy_num}</td>
+                            <td>暂无信息</td>
+                            <td>暂无信息</td>
+                            <td>{$vo.remark}</td>
+                            <td>
+                                <a href="javascript:;" class="layui-btn layui-btn-normal layui-btn-mini" onclick="open_inline({$vo.id});">进线</a>
+                                <a href="javascript:;" class="layui-btn layui-btn-normal layui-btn-mini" onclick="open_click({$vo.id});">点击量</a>
+                                <a href="{:url('admin/old_adcount/detail',['count_url'=>base64_encode($vo['count_url'])])}" class="layui-btn layui-btn-normal layui-btn-mini">查看详情</a>
+                                <a href="{:url('admin/changewx/add',['change_url'=>base64_encode($vo.count_url)])}" class="layui-btn layui-btn-normal layui-btn-mini">换微信号</a>
+                                <a href="{:url('admin/old_adcount/edit',['id'=>$vo['id']])}" class="layui-btn layui-btn-normal layui-btn-mini">编辑</a>
+                                <a href="{:url('admin/old_adcount/delete',['count_name'=>base64_encode($vo['count_url'])])}" class="layui-btn layui-btn-danger layui-btn-mini ajax-delete">删除</a>
+                            </td>
+                        </tr>
+                        {/foreach}
+                    </tbody>
+                </table>
+                {$url_list->render()}
+            </div>
+        </div>
+    </div>
+</div>
+{/block} {block name="script"}
+<script>
+    //iframe层-禁滚动条
+    //页面层-自定义
+    function open_inline(id) {
+        var url = "/admin/old_adcount/add_advdata/cid/" + id;
+        var str = "<form style='margin:15px;' class='layui-form form-container' action='" + url + "' method='post'><input type='hidden' name='type' value='1' /><div class='layui-form-item'><label style='padding:9px 0px;width:60px;' class='layui-form-label'>时间</label><div class='layui-input-block'><input type='text' name='time' value='' placeholder='请输入时间(几点到几点)' required  lay-verify='required' class='layui-input'></div></div><div class='layui-form-item'><label style='padding:9px 0px;width:60px;' class='layui-form-label'>进线</label><div class='layui-input-block'><input type='text' name='inline' value='0' required  lay-verify='required' class='layui-input'></div></div><div class='layui-form-item'><div class='layui-input-block'><button class='layui-btn' lay-submit lay-filter='*'>保存</button></div></div></form>";
+        layer.open({
+            type: 1,
+            title: '进线',
+            closeBtn: 1,
+            shadeClose: true,
+            skin: 'yourclass',
+            content: str
+        });
+    }
+
+    function open_click(id) {
+        var url = "/admin/old_adcount/add_advdata/cid/" + id;
+        var str = "<form style='margin:15px;' class='layui-form form-container' action='" + url + "' method='post'><input type='hidden' name='type' value='2' /><div class='layui-form-item'><label style='padding:9px 0px;width:60px;' class='layui-form-label'>时间</label><div class='layui-input-block'><input type='text' name='time' value='' placeholder='请输入时间(几点到几点)' required  lay-verify='required' class='layui-input'></div></div><div class='layui-form-item'><label style='padding:9px 0px;width:60px;' class='layui-form-label'>点击量</label><div class='layui-input-block'><input type='text' name='click' value='0' required  lay-verify='required' class='layui-input'></div></div><div class='layui-form-item'><div class='layui-input-block'><button class='layui-btn' lay-submit lay-filter='*'>保存</button></div></div></form>";
+        layer.open({
+            type: 1,
+            title: '后台点击量',
+            closeBtn: 1,
+            shadeClose: true,
+            skin: 'yourclass',
+            content: str
+        });
+    }
+
+
+    $('.sort').click(function() {
+        $('#adcount_order').append("<input type='hidden' name='ad_order' value='sort' />");
+    });
+
+    $('.count_ip_num').click(function() {
+        $('#adcount_order').append("<input type='hidden' name='ad_order' value='count_ip_num' />");
+    });
+
+    $('.count_copy_ip_num').click(function() {
+        $('#adcount_order').append("<input type='hidden' name='ad_order' value='count_copy_ip_num' />");
+    });
+
+    $('.count_visit').click(function() {
+        $('#adcount_order').append("<input type='hidden' name='ad_order' value='count_visit' />");
+    });
+
+    $('.count_copy_num').click(function() {
+        $('#adcount_order').append("<input type='hidden' name='ad_order' value='count_copy_num' />");
+    });
+</script>
+{/block}

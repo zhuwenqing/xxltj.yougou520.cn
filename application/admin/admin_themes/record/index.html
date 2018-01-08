@@ -1,0 +1,171 @@
+{extend name="base" /} {block name="body"}
+<style>
+    .layui-table td, .layui-table th{
+        padding: 6px 9px !important;
+        font-size: 13px !important;
+    }
+</style>
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">统计数据</li>
+            <li class=""><a href="{:url('admin/record/add')}">添加数据</a></li>
+        </ul>
+        <div class="layui-tab-content">
+            <form class="layui-form layui-form-pane" id="adcount_order" action="{:url('admin/record/index')}" method="get">
+                <div class="layui-inline">
+                    <label class="layui-form-label">渠道</label>
+                    <div class="layui-input-inline">
+                        <select name="channel">
+                            <option value="">全部</option>
+                            {foreach name="category_level_list" item="vo"}
+                            <option value="{$vo.id}">{$vo.name}</option>
+                            {/foreach}
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">关键词</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="keyword" value="{$keyword}" placeholder="请输入关键词" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">开始时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="start_time" value="{$start_time}" class="layui-input datetime">
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">结束时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="end_time" value="{$end_time}" class="layui-input datetime">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn">搜索</button>
+                </div>
+
+            </form>
+            <hr>
+
+            <div class="layui-tab-item layui-show">
+                <table class="layui-table">
+                    <thead>
+                        <tr>
+                            <th>日期</th>
+                            <th>媒体</th>
+                            <th>渠道</th>
+                            <th>户别</th>
+                            <th>负责人</th>
+                            <th>对接人</th>
+                            <th>平台</th>
+                            <th>广告</th>
+                            <th>统计时间截点</th>
+                            <th>坐席/人数</th>
+                            <th>进线</th>
+                            <th>均线价</th>
+                            <th>沟通率</th>
+                            <th>成单数</th>
+                            <th>开单金额</th>
+                            <th>均单价</th>
+                            <th>实际广告费</th>
+                            <th>服务费</th>
+                            <th>广告费</th>
+                            <th>投产比</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {foreach name="results" item="result"}
+                            {foreach name="result['data_result']" item="v" key="k"}
+                                <tr>
+                                    <td>{$v.date}</td>
+                                    <td>{$v.media}</td>
+                                    <td>{$v.name}</td>
+                                    <td>{$v.alias}</td>
+                                    <td>{$v.main}</td>
+                                    <td>{$v.pick_up}</td>
+                                    <td>{if condition="$v.table == 1"}B2{elseif condition="$v.table == 2" /}A3{/if}</td>
+                                    <td>{$v.adv_label}</td>
+                                    <td>{$v.start_time} - {$v.end_time}</td>
+                                    <td>{$v.seat}</td>
+                                    <td>{$v.inline}</td>
+                                    <td>{$v.average_inline_price}</td>
+                                    <td>{$v.communication_rate}</td>
+                                    <td>{$v.deal_num}</td>
+                                    <td>{$v.deal_price}</td>
+                                    <td>{$v.average_deal_price}</td>
+                                    <td>{$v.actual_adv_cost}</td>
+                                    <td>{$v.service_cost}</td>
+                                    <td>{$v.adv_cost}</td>
+                                    <td>{$v.production_ratio}</td>
+                                    <td>
+                                        <a href="{:url('admin/record/edit',['id'=>$v.id])}" class="layui-btn layui-btn-normal layui-btn-mini">编辑</a>
+                                        <a href="{:url('admin/record/delete')}" class="layui-btn layui-btn-danger layui-btn-mini ajax-delete">删除</a>
+                                    </td>
+                                </tr>
+                            {/foreach}
+                            {if condition="count($result['data_result']) - 1 == $k"}
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="color:red;font-weight:600;">{$result.total_seat}</td>
+                                    <td style="color:red;font-weight:600;">{$result.total_inline}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="color:red;font-weight:600;">{$result.total_deal_num}</td>
+                                    <td style="color:red;font-weight:600;">{$result.total_deal_price}</td>
+                                    <td></td>
+                                    <td style="color:red;font-weight:600;">{$result.total_actual_adv_cost}</td>
+                                    <td style="color:red;font-weight:600;">{$result.total_service_cost}</td>
+                                    <td style="color:red;font-weight:600;">{$result.total_adv_cost}</td>
+                                    <td style="color:red;font-weight:600;">{$result.total_production_ratio}</td>
+                                    <td></td>
+                                </tr>
+                            {/if}
+                        {/foreach}
+                        <tr>
+                            <td>合计：</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="color:red;font-weight:600;">{$summation.summation_seat}</td>
+                            <td style="color:red;font-weight:600;">{$summation.summation_inline}</td>
+                            <td></td>
+                            <td></td>
+                            <td style="color:red;font-weight:600;">{$summation.summation_deal_num}</td>
+                            <td style="color:red;font-weight:600;">{$summation.summation_deal_price}</td>
+                            <td></td>
+                            <td style="color:red;font-weight:600;">{$summation.summation_actual_adv_cost}</td>
+                            <td style="color:red;font-weight:600;">{$summation.summation_service_cost}</td>
+                            <td style="color:red;font-weight:600;">{$summation.summation_adv_cost}</td>
+                            <td style="color:red;font-weight:600;">{$summation.summation_production_ratio}</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- 分页 -->
+            </div>
+        </div>
+    </div>
+</div>
+{/block} {block name="script"}
+<script>
+
+</script>
+{/block}

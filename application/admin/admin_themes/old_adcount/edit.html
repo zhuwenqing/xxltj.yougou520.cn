@@ -1,0 +1,78 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class=""><a href="{:url('admin/adcount/index')}">统计管理</a></li>
+            <li class="layui-this">修改域名</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form form-container" action="{:url('admin/adcount/update',array('id'=>$urlInfo.id))}" method="post">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">所属栏目</label>
+                        <div class="layui-input-block">
+                            <select name="cid" lay-verify="required">
+                                {foreach name="category_level_list" item="vo"}
+                                <option value="{$vo.id}" {if condition="$urlInfo['cid'] == $vo['id']"}selected="selected"{/if}>{neq name="vo.level" value="1"}|{php}for($i=1;$i<$vo['level'];$i++){echo ' ----';}{/php}{/neq}{$vo.name}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">授权账号</label>
+                        <div class="layui-input-block">
+                            <select name="uid" lay-verify="required">
+                                <option value="0">请选择授权</option>
+                                {foreach name="auth_user" item="av"}
+                                <option value="{$av.id}" {if condition="$urlInfo['uid'] == $av['id']"}selected="selected"{/if}>{$av.nickname}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">网站地址</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="count_url" value="{$urlInfo.count_url}" required  lay-verify="required" placeholder="请输入网站地址(不带参数) 例:https://blog.csdn.net" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">排序</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="sort" value="{$urlInfo.sort}" required  lay-verify="required" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">备注</label>
+                        <div class="layui-input-block">
+                            <textarea name="remark" placeholder="（选填）请输入备注" class="layui-textarea">{$urlInfo.remark}</textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="*">保存</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script src="__JS__/kindeditor/kindeditor.config.js"></script>
+<script src="__JS__/kindeditor/kindeditor-all-min.js"></script>
+{/block}
+{block name="script"}
+<script>
+    KindEditor.ready(function(K) {
+        K.create('#content', KindEditorOptions);
+    });
+
+    $(document).ready(function(){
+        console.log($('.cid'));
+    });
+</script>
+{/block}

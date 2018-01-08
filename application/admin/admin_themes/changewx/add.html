@@ -1,0 +1,334 @@
+{extend name="base2" /}
+{block name="body"}
+<style>
+    .change_name{
+        width:150px;
+    }
+    .add_upload_wxpic{
+        cursor: pointer;
+    }
+</style>
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class=""><a href="{:url('admin/changewx/index')}">更换微信号管理</a></li>
+            <li class="layui-this">添加域名微信号</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form form-container" action="{:url('admin/changewx/save')}" method="post">
+                    <!-- <div class="layui-form-item">
+                        <label class="layui-form-label">所属栏目</label>
+                        <div class="layui-input-block">
+                            <select name="cid" lay-verify="required">
+                                {foreach name="category_level_list" item="vo"}
+                                <option value="{$vo.id}">{neq name="vo.level" value="1"}|{php}for($i=1;$i<$vo['level'];$i++){echo ' ----';}{/php}{/neq}{$vo.name}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div> -->
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">授权账号</label>
+                        <div class="layui-input-block">
+                            <select name="uid" class="wx_uid" lay-verify="required">
+                                <option value="0">请选择授权</option>
+                                {foreach name="auth_user" item="av"}
+                                <option value="{$av.id}">{$av.nickname}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">网站地址</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="change_url" value="{$change_url}" required  lay-verify="required" placeholder="请输入网站地址(不带参数) 例:https://blog.csdn.net" class="layui-input wx_change_url">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">添加微信号类型</label>
+                        <div class="layui-input-block">
+                            <select name="wid" lay-verify="required" class="wx_wid" lay-filter="test">
+                                <option value="">请选择添加微信号的类型</option>
+                                <option value="1">批量微信号+(可选)二维码闪图</option>
+                                <option value="2">对应微信号+对应微信二维码</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="addwechat" style="display:none;">
+                        
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">添加微信号</label>
+                            <div class="layui-input-block change_one"></div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">二维码闪图</label>
+                            <div class="layui-input-block">
+                                <div class="w_image_one" style="display:inline_block;"></div>
+                                <button type="button" class="layui-btn" id="upload_bulin">上传图片</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div id="typetwo" style="display:none;">
+                        <div id="onlywechat">
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">添加微信号</label>
+                                    <div class="layui-input-block change_two">
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">二维码</label>
+                                    <div class="layui-input-block">
+                                        <button type="button" id="test2" class="layui-btn">上传二维码</button>
+                                        <div id="photo-container"></div>
+                                    </div>
+                                </div>
+
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">二维码背景</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="water" value="1" title="是" lay-filter="r1">
+                            <input type="radio" name="water" value="0" title="否" checked lay-filter="r1">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item water_image" style="display:none;">
+                        <label class="layui-form-label">水印二维码</label>
+                        <div class="layui-input-block" style="text-align:center;">
+                                <table style="background-color:#eee;">
+                                    <tr>
+                                        {foreach name="water_imgs" item="water_img1"}
+                                        <td style="padding:7px 5px 0 5px;"><img style="width:180px;display:block;" src="/{$water_img1.w_path}" alt=""></td>
+                                        {/foreach}
+                                    </tr>
+                                    <tr>
+                                        {foreach name="water_imgs" item="water_img2" key="k"}
+                                        <td><input class="water_f" type="radio" name="water_id" value="{$water_img2.water_id}" title=" " {if condition="$k eq 0"}checked{/if}></td>
+                                        {/foreach}
+                                    </tr>
+                                </table>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">排序</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="sort" value="0" required  lay-verify="required" class="layui-input wx_sort">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">备注</label>
+                        <div class="layui-input-block">
+                            <textarea name="remark"  placeholder="（选填）请输入备注" class="layui-textarea wx_remark"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="*">保存</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script src="__JS__/kindeditor/kindeditor.config.js"></script>
+<script src="__JS__/kindeditor/kindeditor-all-min.js"></script>
+{/block}
+{block name="script"}
+<script>
+
+    layui.use('upload', function(){
+    var $ = layui.jquery
+    ,upload = layui.upload;
+
+    //普通图片上传
+    var uploadInst = upload.render({
+        elem: '#upload_bulin'
+        ,url: "{:url('api/Upload/upload')}"
+        ,before: function(obj){
+        //预读本地文件示例，不支持ie8
+        // obj.preview(function(index, file, result){
+        //     $('#demo1').attr('src', result); //图片链接（base64）
+        // });
+        }
+        ,done: function(data){
+            if (data.error === 0) {
+                document.getElementById('thumb').value = data.url;
+            } else {
+                layer.msg(data.message);
+            }
+        }
+        ,error: function(){
+        //演示失败状态，并实现重传
+        var demoText = $('#demoText');
+        demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+        demoText.find('.demo-reload').on('click', function(){
+            uploadInst.upload();
+        });
+        }
+    });
+    
+    //多图片上传
+    upload.render({
+        elem: '#test2'
+        ,url: "{:url('api/Uploads/upload')}"
+        ,multiple: true
+        ,before: function(obj){
+            // console.log(obj);
+        //预读本地文件示例，不支持ie8
+        //   obj.preview(function(index, file, result){
+            // $('#demo2').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+            // console.log(result);
+        //   });
+        }
+        ,done: function(res){
+        //上传完毕
+        var photo_list_item = '<div class="photo-list"><input type="text" name="qrcode_path[]" value="' + res.url + '" class="layui-input layui-input-inline">';
+        photo_list_item += '<button type="button" class="layui-btn layui-btn-danger remove-photo-btn">移除</button></div>';
+        $('#photo-container').append(photo_list_item);
+        // console.log(photo_list_item);
+        }
+    });
+    
+    });
+
+    layui.use('form', function(){
+        var form = layui.form;
+        
+        //监听提交
+        form.on('submit(*)', function(data){
+            // console.log(data);
+            // layer.msg(JSON.stringify(data.field));
+            $.ajax({
+                url: data.form.action,
+                type: data.form.method,
+                data: $(data.form).serialize(),
+                success: function (info) {
+                    if (info.code === 1) {
+                        setTimeout(function () {
+                            location.href = info.url;
+                        }, 1000);
+                    }
+                    layer.msg(info.msg);
+                }
+            });
+            return false;
+        });
+
+        //监听select选择
+        form.on('select(test)', function(data){
+            if(data.value == 1){
+                    $('#typetwo').css('display','none');
+                    $('.change_one > *').remove();
+                    $('.w_image_one > *').remove();
+                    $('.change_two > *').remove();
+                    $('#photo-container > *').remove();
+                    $('#addwechat').css('display','block');
+                    $('.w_image_one').append('<input type="text" name="qrcode_path" value="" class="layui-input layui-input-inline bulin" id="thumb">');
+                    $('.change_one').append('<textarea name="change_name" placeholder="批量添加微信号，请输入微信号(至少一个) 多个微信号每行一个(Enter键换行)" class="layui-textarea c_wx"></textarea>');
+            }else if(data.value == 2){
+                    $('#addwechat').css('display','none');
+                    $('.change_two > *').remove();
+                    $('#photo-container > *').remove();
+                    $('.change_one > *').remove();
+                    $('.w_image_one > *').remove();
+                    $('#typetwo').css('display','block');
+                    $('.change_two').append('<textarea name="change_name" placeholder="批量添加微信号，请输入微信号(至少一个) 多个微信号每行一个(Enter键换行)" class="layui-textarea c_wx"></textarea>');
+                
+            }
+            // console.log(data);
+        });
+
+        //监听radio选择
+        form.on('radio(r1)', function(data){
+            // console.log(data.value);
+            if(data.value == 1){
+                $('.water_image').css('display','block');
+            }else if(data.value == 2){
+                $('.water_image').css('display','none');
+            }else{
+                $('.water_image').css('display','none');
+            }
+        });
+
+    });
+
+    $('#photo-container').on('click', '.remove-photo-btn', function () {
+        $(this).parent('.photo-list').remove();
+    });
+
+    KindEditor.ready(function(K) {
+        K.create('#content', KindEditorOptions);
+    });
+
+
+
+
+
+
+
+    var wx_length = 1;
+    var wx_index = null;
+    var is_zero = 0;
+    var wx_code = [];
+    var wx_qrcode = [];
+    function add_wechat_name(){
+        // $.get("{:url('admin/changewx/ajaxwn')}", function(res){$('#onlywechat').append(res);});
+        $('#onlywechat').append('<div style="display:flex;" class="wbx"><div class="layui-form-item"><label class="layui-form-label">添加微信号</label><div class="layui-input-block"><input type="text" name="change_name" placeholder="请输入微信号"  data-id="'+wx_length+'" required  lay-verify="required" class="wx_stxlwx layui-input change_name"></div></div><div class="layui-form-item"><label class="layui-form-label">二维码</label><div class="layui-input-block"><input type="text" name="qrcode_path"  data-id="'+wx_length+'" value="" class="layui-input layui-input-inline wx_qrcode_path"><div data-id="'+wx_length+'" class="add_upload_wxpic layui-box layui-upload-button"><span class="layui-upload-icon"><i class="layui-icon"></i>上传图片</span></div></div></div><a href="###" class="del_wx" data-id="'+wx_length+'">删除</a></div>');
+        wx_length++;
+
+    }
+    $('#typetwo').on('click','.add_upload_wxpic',function(event){
+        wx_index = $(this).attr('data-id');
+        is_zero = 1;
+        if(is_zero){
+            $('#upliad_wxpic').click();
+        }
+        is_zero = 0;
+        
+    });
+    $('#typetwo').on('click','.del_wx',function(event){
+        console.log($(this).attr('data-id'));
+    });
+    function zero_click(){
+        if(is_zero === 0){
+            wx_index = 0;
+        }
+    }
+    $('#typetwo').on('input','.wx_stxlwx',function(event){
+        wx_code[$(this).attr('data-id')] = $(this).val();
+    });
+    $('.ajax_save').click(function(event){
+        var code = wx_code.length > 0 ? wx_code : '';
+        var qrcode = wx_qrcode.length > 0 ? wx_qrcode : '';
+        $.post('/admin/changewx/save.html',{
+            "uid":$('.wx_uid').val(),
+            "change_url":$('.wx_change_url').val(),
+            "wid":$('.wx_wid').val(),
+            "sort":$('.wx_sort').val(),
+            "remark":$('.wx_remark').val(),
+            "wx_code":code,
+            "wx_qrcode":qrcode,
+            "water_id":$("input[name=water_id]:checked").val(),
+            "change_name":$('.c_wx').val(),
+            "qrcode_path":$('.bulin').val()
+        },function(data){
+            console.log(data);
+        });
+    });
+</script>
+{/block}

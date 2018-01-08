@@ -1,0 +1,79 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">总仓管理</li>
+            <li class=""><a href="{:url('admin/externalwarehouse/add')}">添加货存</a></li>
+        </ul>
+        <div class="layui-tab-content">
+
+            <form class="layui-form layui-form-pane" action="{:url('admin/externalwarehouse/index')}" method="get">
+                <div class="layui-inline">
+                    <label class="layui-form-label">分类</label>
+                    <div class="layui-input-inline">
+                        <select name="cid">
+                            <option value="0">全部</option>
+                            {foreach name="category_level_list" item="vo"}
+                            <option value="{$vo.id}" {if condition="$cid==$vo.id"} selected="selected"{/if}>{neq name="vo.level" value="1"}|{php}for($i=1;$i<$vo['level'];$i++){echo ' ----';}{/php}{/neq} {$vo.name}</option>
+                            {/foreach}
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">关键词</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="keyword" value="{$keyword}" placeholder="请输入关键词" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn">搜索</button>
+                </div>
+            </form>
+            <hr>
+
+            <form action="" method="post" class="ajax-form">
+                <div class="layui-tab-item layui-show">
+                    <table class="layui-table">
+                        <thead>
+                        <tr>
+                            <th style="width: 15px;"><input type="checkbox" class="check-all"></th>
+                            <th style="width: 30px;">ID</th>
+                            <th style="width: 30px;">排序</th>
+                            <th>产品名称</th>
+                            <th>产品分类</th>
+                            <th>产品发布人</th>
+                            <th>发布时间</th>
+                            <th>备注</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {foreach name="article_list" item="vo"}
+                        <tr>
+                            <td><input type="checkbox" name="ids[]" value="{$vo.id}"></td>
+                            <td>{$vo.id}</td>
+                            <td><img src="{$vo.thumb}" width="80px;"></td>
+                            <td>{$vo.name}</td>
+                            <td>{$category_list[$vo['cid']]}</td>
+                            <td>{$vo.publisher}</td>
+                            <td>{$vo.publish_time}</td>
+                            <td>{$vo.remark}</td>
+                            <td>
+                                <a href="{:url('home/externalwarehouse/index',['id'=>$vo['id']])}" target="_blank" class="layui-btn layui-btn-normal layui-btn-mini">浏览</a>
+                                <a href="{:url('admin/externalwarehouse/edit',['id'=>$vo['id']])}" class="layui-btn layui-btn-normal layui-btn-mini">编辑</a>
+                                <a href="{:url('admin/externalwarehouse/delete',['id'=>$vo['id']])}" class="layui-btn layui-btn-danger layui-btn-mini ajax-delete">删除</a>
+                            </td>
+                        </tr>
+                        {/foreach}
+                        </tbody>
+                    </table>
+                    <!--分页-->
+                    {$article_list->render()}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{/block}

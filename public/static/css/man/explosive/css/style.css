@@ -1,0 +1,183 @@
+body,html{
+    width:100%;height:100%;padding:0;margin:0;font-family: 微软雅黑;font-size: 16px;color:#333;text-align: justify;
+}
+.main{
+    max-width:740px;margin:0 auto;padding:10px;margin-top:10px;box-shadow: 0 2px 4px #6c6d6f;
+}
+.img{
+    text-align: center;margin:5px 0;
+}
+.img img{
+    max-width: 100%;
+}
+p{
+    line-height: 25px;
+}
+p .red{
+    color:#a80d0d;
+}
+.reds{
+    color:red;
+}
+
+.top{
+    font-size: 24px;padding:5px 10px;
+}
+.time{
+    font-size: 14px;color:#666;padding-left:10px;
+}
+.hr{
+    width:96%;margin:1em auto;border-top:1px #eeeeee solid;
+}
+.dd{
+    border:1px solid #a0a0a0;border-left:0;border-right:0;padding:5px 10px;margin-bottom:20px;
+}
+.dd b{
+    display:block;float:left;width:30px;line-height: 25px;border:1px #333 solid;border-top:0;border-bottom:0;text-align: center;
+    margin-top:10px;
+}
+.dd p{
+    padding-left:50px;margin:10px 0;line-height: 25px;color:#510707;font-weight: 600;text-indent: 2em;
+}
+.a1{
+    padding:30px 10px;line-height: 25px;text-indent: 2em;position: relative;
+}
+.a1::before{
+    content: "“";font-family: Helvetica ;
+    font-size: 80px;color:#c0c8d1;font-weight: 600;position: absolute;top:25px;left:-25px;
+}
+.a1::after{
+    content: "”";font-family: Helvetica ;
+    font-size: 80px;color:#c0c8d1;font-weight: 600;position: absolute;bottom:0px;right:0px;
+}
+
+.a2{
+    text-align: center;
+}
+.a2 b{
+    font-size:22px;color:#961818;text-shadow:1px 1px 2px #333;display:inline-block;
+    border-bottom:solid #3f63b2 5px;padding-bottom:5px;
+}
+.a2 b span{
+    font-size:96%;color:#4b4949;
+}
+
+
+.a3{
+    font-size: 14px;color:red;line-height: 25px;
+}
+
+.a4 b{
+    background:#6f6969;color:#d5cb29;font-size: 20px;display:inline-block;margin:3px 0;
+}
+.a5{
+    padding:15px;background:#efefef;margin:10px 0;line-height: 25px;position: relative;
+}
+.a5::before{
+    position: absolute;content: "";width:40px;height:4px;background:#f96e57;top:0;right:0;
+}
+
+.a6{
+    padding:10px;border:1px #e2e2e2 solid;line-height: 25px;box-shadow: rgb(226, 226, 226) 0px 16px 1px -13px;
+    margin-bottom:20px;
+}
+
+.a7{
+    text-align: right;font-size: 14px;color:#666;
+}
+
+.a8 b{
+    font-size: 20px;line-height: 22px;
+}
+.a8 b img{
+    height:24px;position: relative;top:3px;
+}
+.a8 .bg{
+    background:#f96e57;height:5px;font-size: 0;margin-top:3px;margin-bottom:20px;
+}
+.a8 .bg img{
+    width: 100%;height:100%;
+}
+
+.a9{
+    padding:10px;background:#fff0e2;box-shadow: rgb(170, 170, 170) 0px 0px 10px;
+    border:1px #c2bcb7 solid;line-height: 25px;
+}
+
+.a10{
+    text-align: center;
+}
+.a10 b{
+    display:inline-block;font-size: 26px;border-bottom:1px #333 solid;padding:5px 20px;
+}
+
+.a11{
+    text-align: center;
+}
+.a11 b{
+    display:inline-block;color:#8a0b0b;background:#fce7ca;font-size: 20px;
+    padding:3px;margin-top:5px;
+}
+
+.a12 b{
+    background:#a0a0a0;color:#961818;font-size: 24px;
+}
+
+.a13{
+    border:1px solid #f96e57;padding:10px;
+}
+.a13 b{
+    color:#a80d0d;
+}
+
+.a14{
+    text-align: center;margin-top:20px; 
+}
+.a14 b{
+    display:inline-block;background:#a0a0a0;color:#961818;font-size: 22px;margin:4px 0;
+}
+.a15{
+    line-height: 25px;border-bottom:1px solid #f96e57;font-size: 20px;font-weight: 600;
+}
+.a16{
+    text-align: center;padding:10px;background:#efefef;border:1px solid #c0c8d1;
+}
+.a16 b{
+    color:#a80d0d;
+}
+.a17{
+    color:#a80d0d;font-size: 14px;font-weight: 600;
+}
+
+.a20{
+    padding:20px;border:3px solid #f96e57;color:#f82e2e;overflow: hidden;position: relative;
+}
+.a20 img{
+    max-width:100%;
+}
+.a20::before{
+    content:"";width:30px;height:30px;background:#f96e57;position: absolute;top:-15px;left:-15px;
+    transform: rotate(45deg);font-size: 0;
+}
+.a20::after{
+    content:"";width:30px;height:30px;background:#f96e57;position: absolute;top:-15px;right:-15px;
+    transform: rotate(-45deg);font-size: 0;
+}
+.a20 .left{
+    content:"";width:30px;height:30px;background:#f96e57;position: absolute;bottom:-15px;left:-15px;
+    transform: rotate(45deg);font-size: 0;
+}
+.a20 .right{
+    content:"";width:30px;height:30px;background:#f96e57;position: absolute;bottom:-15px;right:-15px;
+    transform: rotate(-45deg);font-size: 0;
+}
+
+.foot{
+    overflow: auto;font-size: 14px;color:#666;line-height: 30px;padding:0 10px;
+}
+.foot .left{
+    float:left;
+}
+.foot .right{
+    float:right;
+}

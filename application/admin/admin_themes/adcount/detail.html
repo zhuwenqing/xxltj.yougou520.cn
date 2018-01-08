@@ -1,0 +1,264 @@
+{extend name="base" /} {block name="body"}
+<style>
+    .layui-form-checkbox {
+        height: 38px;
+        line-height: 37px;
+        margin: 0;
+    }
+    
+    .layui-form-pane .layui-form-checkbox {
+        margin: 0;
+    }
+</style>
+<div class="layui-body">
+    <div style="font-size:20px;font-weight:bold;padding-top:5px;">统计域名:{$count_url}</div>
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">统计详情</li>
+            <li class=""><a href="{:url('admin/adcount/wechat_count',['id'=>$cid])}">复制次数</a></li>
+            <li class=""><a href="{:url('admin/adcount/address_count',['id'=>$cid])}">地域统计</a></li>
+            <li class=""><a href="{:url('admin/adcount/advdata_page',['id'=>$cid])}">点击量/进线</a></li>
+            <li class=""><a href="{:url('admin/adcount/complaint',['id'=>$cid])}">投诉统计</a></li>
+            <li class=""><a href="{:url('admin/adcount/ad_code',['id'=>$cid])}">统计代码</a></li>
+            <!-- <li class=""><a href="javascript:void(0)" onclick="window.history.go(-1);">返回</a></li> -->
+        </ul>
+        <div class="layui-tab-content">
+
+            <form class="layui-form layui-form-pane" action="{:url('admin/adcount/detail',['id'=>$cid])}" method="get">
+                <div class="layui-inline">
+                    <label class="layui-form-label">关键字</label>
+                    <div class="layui-input-inline">
+                        <select name="key_name">
+                            {foreach name='search_list' item='vo'}
+                            <option value="{$vo.value}" {if condition="$key_name==$vo.value"} selected="selected"{/if}>{$vo.name}</option>
+                            {/foreach}
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <div class="layui-input-inline">
+                        <input type="text" name="keyword" value="{$keyword}" placeholder="请输入关键词" class="layui-input">
+                    </div>
+                </div>
+                &nbsp;&nbsp;&nbsp;
+                <div class="layui-inline">
+                    <label class="layui-form-label">开始时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="start_time" value="{$start_time}" class="layui-input datetime">
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">结束时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="end_time" value="{$end_time}" class="layui-input datetime">
+                    </div>
+                </div>
+
+                <div class="layui-inline" pane="">
+                    <div class="layui-input-block" style="margin-left:5px;">
+                        <input type="checkbox" name="is_copy" lay-skin="primary" title="只看复制事件" {if condition='$is_copy == "on"' }checked="" {/if}>
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <button class="layui-btn">搜索</button>
+                </div>
+            </form>
+            <hr>
+
+            <form class="layui-form layui-form-pane" id="adcount_time" action="{:url('admin/adcount/detail',['id'=>$cid])}" method="get">
+                <div class="layui-inline">
+                    <button class="layui-btn layui-btn-primary layui-btn-small beforeYesterDay">前天</button>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layui-btn-primary layui-btn-small yesterDay">昨天</button>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layui-btn-primary layui-btn-small toDay">今天</button>
+                </div>
+            </form>
+
+            <form class="layui-form layui-form-pane" id="adcount_time" action="{:url('admin/adcount/exportExcel')}" method="post">
+                <input type="hidden" name="list" value='{$excel_data}'>
+                <div class="layui-inline" style="margin-top:8px;">
+                    <button class="layui-btn layui-btn-primary layui-btn-small">导出表格</button>
+                </div>
+            </form>
+
+            <hr>
+            <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+            <!-- <div id="main" style="height:400px;"></div> -->
+
+            <form action="" method="post" class="ajax-form">
+                <div class="layui-tab-item layui-show">
+                    <table class="layui-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 15px;"><input type="checkbox" class="check-all"></th>
+                                <th>用户ip</th>
+                                <th>复制微信号</th>
+                                <th>复制时间</th>
+                                <th>复制来源关键词</th>
+                                <th>复制来源地区</th>
+                                <th>访问时间</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {foreach name='count_detail_list' item="v"}
+                            <tr>
+                                <td><input type="checkbox" name="ids[]" value="{$v.id}"></td>
+                                <td>{$v.count_ip}</td>
+                                <td>{$v.copu_wechat}</td>
+                                <td>{if condition="$v.copy_time != ''"}{$v.copy_time|date='Y-m-d H:i:s',###}{/if}</td>
+                                <td>{$v.origin_keyword}</td>
+                                <td>{$v.province}&nbsp;{$v.city}</td>
+                                <td>{$v.visit_time|date='Y-m-d H:i:s',###}</td>
+                            </tr>
+                            {/foreach}
+                        </tbody>
+                    </table>
+                    <!--分页-->
+                    {$count_detail_list->render()}
+                </div>
+            </form>
+        </div>
+
+        <div class="layui-tab-item layui-show">
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th>总访问ip量</th>
+                        <th>总复制ip量</th>
+                        <th>独立访问ip量</th>
+                        <th>独立复制ip量</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{$ip_count}</td>
+                        <td>{$copy_count}</td>
+                        <td>{$Ind_ip_count}</td>
+                        <td>{$Ind_copy_ip_count}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{/block}
+
+{block name="js"}
+<!-- ECharts单文件引入 -->
+<script src="__JS__/echarts/build/dist/echarts.js"></script>
+{/block}
+{block name="script"}
+<script>
+    $('.beforeYesterDay').click(function(){
+        $('#adcount_time').append("<input type='hidden' name='adcount_time' value='beforeYesterDay' />");
+    });
+    $('.yesterDay').click(function(){
+        $('#adcount_time').append("<input type='hidden' name='adcount_time' value='yesterDay' />");
+    });
+    $('.toDay').click(function(){
+        $('#adcount_time').append("<input type='hidden' name='adcount_time' value='toDay' />");
+    });
+</script>
+<script type="text/javascript">
+    // 路径配置
+    require.config({
+        paths: {
+            echarts: '__JS__/echarts/build/dist'
+        }
+    });
+    
+    // 使用
+    require(
+        [
+            'echarts',
+            'echarts/chart/line', // 使用柱状图就加载bar模块，按需加载
+        ],
+        function (ec) {
+            // 基于准备好的dom，初始化echarts图表
+            var myChart = ec.init(document.getElementById('main')); 
+            
+            option = {
+                title : {
+                    text: '今日访问曲线图',
+                    // subtext: '纯属虚构'
+                },
+                tooltip : {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data:['总访问ip量','总复制ip量']
+                },
+                toolbox: {
+                    show : true,
+                    feature : {
+                        mark : {show: true},
+                        dataView : {show: true, readOnly: false},
+                        magicType : {show: true, type: ['line', 'bar']},
+                        restore : {show: true},
+                        saveAsImage : {show: true}
+                    }
+                },
+                calculable : true,
+                xAxis : [
+                    {
+                        type : 'category',
+                        boundaryGap : false,
+                        data : ['0点','1点','2点','3点','4点','5点','6点','7点','8点','9点','10点','11点','12点','13点','14点','15点','16点','17点','18点','19点','20点','21点','22点','23点','24点']
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value',
+                        axisLabel : {
+                            formatter: '{value}'
+                        }
+                    }
+                ],
+                series : [
+                    {
+                        name:'总访问ip量',
+                        type:'line',
+                        data:[11, 11, 15, 13, 12, 13, 10],
+                        markPoint : {
+                            data : [
+                                {type : 'max', name: '最大值'},
+                                {type : 'min', name: '最小值'}
+                            ]
+                        },
+                        markLine : {
+                            data : [
+                                {type : 'average', name: '平均值'}
+                            ]
+                        }
+                    },
+                    {
+                        name:'总复制ip量',
+                        type:'line',
+                        data:[1, -2, 2, 5, 3, 2, 0],
+                        markPoint : {
+                            data : [
+                                {name : '周最低', value : -2, xAxis: 1, yAxis: -1.5}
+                            ]
+                        },
+                        markLine : {
+                            data : [
+                                {type : 'average', name : '平均值'}
+                            ]
+                        }
+                    }
+                ]
+            };
+    
+            // 为echarts对象加载数据 
+            myChart.setOption(option); 
+            myChart.setTheme('macarons');
+        }
+    );
+</script>
+{/block}

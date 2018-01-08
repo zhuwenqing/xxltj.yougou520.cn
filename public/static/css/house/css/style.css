@@ -1,0 +1,230 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	font-family: '微软雅黑';
+	font-weight: 400;
+}
+
+.contain{
+	max-width: 640px;
+	margin: 0 auto;
+	background-color: #fcfcfc;
+	padding: 15px 0px;
+}
+
+.header{
+	height: 60px;
+	background-color: #E05858;
+	position: relative;
+}
+
+.header img{
+	position: absolute;
+	right: 15px;
+	top: 15px;
+}
+
+.main{
+	padding: 0 10px;
+}
+
+.title{
+	border-bottom: 1px solid #ebebeb;
+	padding: 8px 0px;
+	font-size: 14px;
+	color: #666;
+}
+
+.main-title{
+	padding: 10px 0;
+}
+
+.main-title h2{
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.fl-01 .tou{
+	background-color: #f3f3f3;
+	height: 36px;
+	position: relative;
+	padding: 5px 0;
+	margin-bottom: 18px;
+}
+
+.tou-img{
+	float: left;
+	position: absolute;
+	top: 6px;
+	left: 6px;
+}
+
+.tou-day{
+	margin-left: 48px;
+	float: left;
+}
+
+.tou-day .name{
+	color: #0086CE;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 18px;
+
+}
+
+.tou-day .day{
+	color: #a1a1a1;
+	font-size: 12px;
+}
+
+.floor-num{
+	position: absolute;
+	top: 14px;
+	right: 18px;
+	color: #9c9c9c;
+	font-size: 12px;
+}
+
+.down{
+	padding: 0 5px;
+	margin-bottom: 34px;
+}
+
+.down p{
+	text-indent: 2em;
+	font-size: 15px;
+	text-align: justify;
+	color: #4c4c4c;
+	margin-bottom: 10px;
+	padding: 0 10px;
+	line-height: 22px;
+}
+
+.down p .weixin{
+	color: red;
+	background-color: yellow;
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.down .red{
+	color: red;
+}
+
+.like-list{
+	padding: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.like-list h4{
+	margin-bottom: 10px;
+	font-size: 14px;
+}
+
+.like-list a{
+	margin-right: 10px;
+	width: 40px;
+	display: block;
+	float: left;
+	color: #666;
+	margin-bottom: 4px;
+	text-decoration: none;
+}
+
+.like-list img{
+	margin-bottom: 5px;
+}
+
+.like-list span{
+	display: block;
+	text-align: center;
+	height: 18px;
+	overflow: hidden;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+.down .blockquote {
+    border: 1px dashed #B37C37;
+    background: #FDE8B8;
+    padding: 6px 8px 20px 8px;
+    margin: 5px 0;
+    color: #4C4C4C;
+}
+
+.down .pad{
+	text-indent: 0em;
+}
+
+.footer-add {
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    z-index: 99999;
+}
+
+.footer-add .foot-box {
+    max-width: 670px;
+    background-color: #fff;
+    overflow: hidden;
+    margin: 0 auto;
+    border: 1px solid #999;
+}
+
+.footer-add .foot-box .foot-img {
+    max-width: 50px;
+    
+    float: left;
+}
+
+.footer-add .foot-box .foot-img img {
+    width: 100%;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.footer-add .foot-box .foot-txt {
+    float: right;
+    width: calc(100% - 60px);
+}
+
+.footer-add .foot-box .foot-txt .bold{
+	font-size: 18px;
+	font-weight: 600;
+
+}
+
+.footer-add .foot-box .foot-txt span {
+    font-size: 16px;
+    color: #111;
+    font-weight: 400;
+}
+
+.footer-add .foot-box .foot-txt span .weixin {
+    color: red;
+    background-color: yellow;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.footer-add .foot-box .add {
+    float: right;
+    padding-top: 10px;
+    padding-right: 5px;
+    line-height: 36px;
+}
+
+.footer-add .foot-box .add a {
+    color: #fff;
+    background-color: red;
+    padding: 8px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.beian{
+	text-align: center;
+	color: #666;
+}

@@ -1,0 +1,169 @@
+.videos{
+    width:960px;min-height:calc(100% - 212px);margin:0 auto;
+}
+.video{
+    width:310px;height:auto;margin:5px;float:left;position: relative;
+}
+.clear{
+    clear:both; height: 0; line-height: 0; font-size: 0
+}
+.video p{
+    overflow: hidden; white-space:nowrap; text-overflow:c;  text-indent:0.5em;color:#fff;position:absolute;padding:10px 5px; width:100%;margin:0;display:block;height:auto;top:0px; font-size: 18px;font-weight: 700;background:rgba(0,0,0,0.5)
+}
+.video video{
+    background:#000;
+}
+.video-title{
+    font-size:20px;text-indent: 0.5em;margin-top:20px;border-bottom:1px #ddd solid;padding:15px 0;
+}
+.video-title span{
+    color:#ff5265;
+}
+.videocont{
+    width:100%;height:100%;position: fixed;top:0;left:0;z-index: 999;background:rgba(0,0,0,0.8);display:none;
+}
+#willesPlay{
+    width:800px;height:auto;margin:100px auto;
+}
+.closeBtn{
+    display:inline-block;padding:0px 5px;float:right;margin:5px;border:1px #333 solid;border-radius:50%;cursor:pointer;
+}
+.closeBtn:hover{
+    background:#333;color:#fff;
+}
+.upLoad{
+    color:#333;display:inline-block;float:right;border:1px #96d2f6 solid;padding:8px 15px;margin:0 10px;background:#d1eeff;color:#1686c8;border-radius:3px;
+}
+.upLoad:hover{
+    box-shadow: 0 0 2px #000;
+}
+
+.we-info{
+    width:532px;height:50px;overflow: hidden;position: relative;border:1px #d4d4d4 solid; margin-left:-57px;
+}
+.me-info{
+    width:960px;height:auto;overflow: hidden;position: relative;
+    margin: 0 auto; padding: 50px;
+}
+
+.me-info .info-tl{
+    font-size: 18px;
+    margin-right: 20px;
+    float: left;
+
+}
+.me-info .info-in{
+    width: 500px;
+    height: 30px;
+    font-size: 16px;
+    color: #888;
+    line-height: 24px;
+    font-family: '微软雅黑';
+    border: 1px solid #ddd;
+}
+.me-info .info-in:focus{
+    border-color: #83b4db;
+    outline: 0;
+    -webkit-box-shadow: inset 0 0px 1px rgba(0,0,0,.075), 0 0 4px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 0px 1px rgba(0,0,0,.075), 0 0 4px rgba(102, 175, 233, .6);
+
+}
+.info-upload {
+    padding: 4px 10px;
+    height: 20px;
+    line-height: 20px;
+    position: relative;
+    cursor: pointer;
+    color: #888;
+    background: #eee;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1
+}
+
+.info-upload  input {
+    position: absolute;
+    width: 134px;
+    height: 30px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer
+}
+
+.info-upload:hover {
+    color: #444;
+    background: #e6e6e6;
+    border-color: #ccc;
+    text-decoration: none
+}
+.me-info .info-btn{
+    color: #333;
+    border: 1px solid #ccc;
+    background: #eee;
+    display:block;
+    padding: 6px 12px;
+    margin-bottom: 0px;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 4px;
+    font-family: inherit;
+}
+.me-info .info-btn:focus
+.me-info .info-btn.focus {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #8c8c8c;
+}
+.me-info .info-btn:hover {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+.me-info .info-btn:active,
+.me-info .info-btn.active,
+{
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+.me-info .info-img{
+    font-size: 16px;
+}
+
+
+
+.we-info .title{
+    top:10px;border:1px #777 solid;padding:5px 10px;width:120px;border-radius:5px;float:left;margin-left:10px;
+}
+.we-info .fileBtn{
+    color:#333;height:34px;border:none;background:#1885fe;padding:5px 15px;color:#fff;border-radius:35px;cursor: pointer;float:left;margin-top:-10px;margin-left:10px;
+}
+.we-info .fileBtn:hover{
+
+}
+.fileName{
+    margin-top:-4px;padding:0 10px;float:left;
+}
+.we-info button.layui-btn{
+    position: absolute;right:0;top:8px;
+}
+.abstract{
+    display:block;width:502px;height:150px;border-radius:0 0 5px 5px ;border:1px #d4d4d4 solid;padding:10px 15px;
+}
+.abstractTitle{
+    width:528px;height:20px;border:1px #d4d4d4 solid;padding-left:4px;
+}
+.upLoading{
+    width:100%;height:100%;position:fixed;top:0;left:0;background:#fff;
+}

@@ -1,0 +1,182 @@
+{extend name="base" /}
+{block name="body"}
+
+<style>
+    .center-box{
+        width:800px;
+        margin:0 auto;
+    }
+    .layui-input-block{
+        width:100px;
+    }
+    .service{
+        margin:50px 0;
+    }
+    .adds{
+        float: right;
+        position: relative;
+        top:88px;
+        right:311px;
+    }
+    .fadds{
+        position: relative;
+        left:500px;
+        display: none;
+    }
+    .two{
+        margin-left:128px;
+        width:86%;
+    }
+    .friend{
+        width:86%;
+        margin:0 auto;
+    }
+
+</style>
+
+<header class="header" id="top">
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Navbar-Header -->
+                    <div class="navbar-header">
+                        <!-- Text-Logo -->
+                        <a href="" class="navbar-brand scrollto" title="">
+                            <img style="height:62px;" alt="" src="__STATIC__/images/logo.png">
+                        </a>
+                    </div><!-- /End Navbar-Header -->
+
+                    {if condition = :session('user_id')}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <font color="#FF0000"><div><a href="{:url('wechat/user/index')}">用户中心</a> | <a href="javascript:">{:session('user_name')}</a> | <a href="{:url('wechat/login/logout')}">退出</a></div></font>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><font color="#FF0000"><a  href="{:url('wechat/account/index')}">微信录入</a></font></li>
+                    </ul>
+
+                    {else/}
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <font color="#FF0000"><a  href="{:url('wechat/regist/index')}">注册</a></font> |
+                            <font color="#FF0000"><a  href="{:url('wechat/login/index')}">登录</a></font>
+                        </li>
+                    </ul>
+                    {/if}
+
+                    <!-- Navbar-Collapse -->
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown active" ><a  href="{:url('wechat/index/index')}">首页</a></li>
+                        <li class="dropdown "><a  href="{:url('wechat/wechat/index')}">微信编辑器<span class="caret"></span></a></li>
+                        <li class="dropdown active"><a  href="{:url('wechat/video/index')}">视频专区<span class="caret"></span></a></li>
+                    </ul>
+                    <!-- /End Navbar-Collapse -->
+                </div>
+                <!-- /End Col -->
+            </div><!-- /End Row -->
+        </div><!-- /End Container -->
+    </nav>
+</header>
+
+
+<div class="center-box">
+    <div class="layui-form" action="">
+        <div class="layui-form-item">
+            <div class="layui-input-block adds">
+                <button class="layui-btn" lay-submit lay-filter="*" onclick="jump()">添加客服微信号</button>
+            </div>
+        </div>
+    </div>
+<form class="layui-form two" action="">
+    <div class="layui-form-item service">
+        <label class="layui-form-label">客服号</label>
+        <div class="layui-input-block">
+            <select lay-filter="test" name="city" lay-verify="required">
+                <option value=""></option>
+                {foreach name="accservice_list" item="vo"}
+                <option value="{$vo.id}">{$vo.username}</option>
+                {/foreach}
+            </select>
+        </div>
+    </div>
+</form>
+<div class="friend">
+    <table class="layui-table">
+        <colgroup>
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th style="width:20%;">微信号</th>
+            <th style="width:20%;">微信名</th>
+            <th style="width:20%;">手机</th>
+            <th style="width:20%;">渠道</th>
+            <th style="width:20%;">邮箱</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+
+    <div class="layui-form"><div class="layui-form-item"><div class="layui-input-block fadds"><button class="layui-btn" lay-submit lay-filter="*" onclick="jumpfriend()">添加好友微信号</button></div></div></div>
+
+
+
+
+</div>
+
+
+<script type="text/javascript">
+    function jump(){
+        window.location.href="{:url('wechat/account/add')}";
+    }
+</script>
+
+<script type="text/javascript">
+    function jumpfriend(){
+        window.location.href="{:url('wechat/account/fadd')}";
+    }
+</script>
+
+
+
+
+
+{/block}
+
+{block name="js"}
+<script type="text/javascript">
+    form.on('select(test)', function(data){
+//        console.log(data.elem); //得到select原始DOM对象
+//        console.log(data.value); //得到被选中的值
+        $('td').remove();
+        $.ajax({
+            url:"{:url('wechat/account/friend')}",
+            data:"id="+data.value,
+            type:'GET',
+            success:function(response){
+
+                console.log(response.data.length);
+                if(response.data == ""){
+                    $('tbody').append("<tr><td>无</td><td>无</td><td>无</td><td>无</td><td>无</td></tr>");
+                }else{
+                    for(var i = 0;i < response.data.length;i++){
+                        $('tbody').append("<tr><td>"+response.data[i].wechat_name+"</td><td>"+response.data[i].username+"</td><td>"+response.data[i].mobile+"</td><td>"+response.data[i].name+"</td><td>"+response.data[i].email+"</td></tr>");
+                    }
+                }
+                $('.fadds').css('display','block');
+
+            }
+        })
+    });
+</script>
+{/block}

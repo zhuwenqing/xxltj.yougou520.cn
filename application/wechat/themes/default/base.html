@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1">
+    <title>文案编辑器</title>
+    <meta name="keywords" content="微信编辑器">
+    <meta name="Description" content="微信编辑器">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+
+    {block name="css"}{/block}
+
+    <link href="__CSS__/default.css" rel="stylesheet" type="text/css" />
+    <link href="__CSS__/main.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="__CSS__/common.css">
+    <link rel="stylesheet" type="text/css" href="__CSS__/index.css">
+    <link rel="stylesheet" type="text/css" href="__CSS__/colorpicker.css">
+    <link rel="stylesheet" type="text/css" href="__CSS__/editor-min.css">
+    <link rel="stylesheet" href="__CSS__/breakingnews.css">
+    <link rel="stylesheet" href="__CSS__/wechat.css">
+    <link rel="stylesheet" href="__CSS__/video-list.css">
+    <link rel="stylesheet" href="__JS__/layui/css/layui.css" media="all">
+
+    <script src="__JS__/jquery-1.10.2.min.js" type="text/javascript"></script>
+    
+    <script src="__JS__/colorpicker-min.js" type="text/javascript"></script>
+    <script src="__JS__/uniedit2.js" type="text/javascript"></script>
+    <script src="__JS__/ueditor/third-party/zeroclipboard/ZeroClipboard.min.js" type="text/javascript"></script>
+    <script>
+        // 定义全局JS变量
+        var GV = {
+            current_controller: "wechat/{$controller|default=''}/",
+            base_url: "__STATIC__"
+        };
+    </script>
+    <script src="__JS__/index.js"></script>
+    
+
+    <style>
+        .demo { width: 1000px; margin: 10px auto;}
+        .demo1 { margin-top: 10px;}
+        .demo2 { margin-top: 10px;}
+        a{color:#FFF}
+    </style>
+    <style type="text/css">
+        .the-icons td {
+            border: #e2e2e2 dotted 1px;
+            padding: 5px 9px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 16px;}
+
+        .tr {
+            display: table-row;
+            vertical-align: inherit;
+            border-color: inherit;
+        }
+    </style>
+
+    <script src="__JS__/breakingnews.js"></script>
+    <script>
+        $(function(){
+            $('#breakingnews1').BreakingNews({
+                title: '公告'
+            });
+
+            $('#breakingnews2').BreakingNews({
+                title: '百姓堂公众号：fnnh520',
+                titlebgcolor: '#099',
+                linkhovercolor: '#099',
+                border: '1px solid #099',
+                timer: 4000,
+                effect: 'slide'
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+
+
+<!--主体-->
+{block name="body"}{/block}
+
+
+<!-- 百姓堂评论框 start -->
+<div style="width:100%;" class="footer">
+    <!-- 百姓堂评论框 end -->
+    <!--foot S-->
+    <div style=" margin:auto; width: 1100px; background:rgba(234,233,231,0.9); color:#999;">
+        <br />
+        <p align="center">百姓堂微信图文编辑器，为微信运营者提供在线编辑排版免费的微信编辑工具！</p>
+        <p align="center">Copyright © 2015-2018 百姓堂团队 - All Rights Reserved.</p>
+        <br />
+    </div>
+</div>
+
+<script>
+    /*小图标选择器*/
+    function shifuMouseDownMark(id) {
+
+        var con   = $('#'+id).find("span").html();
+        var range = UE.getEditor('editor').selection.getRange();
+
+        range.select();
+
+        UE.getEditor('editor').selection.getText();
+
+        UE.getEditor('editor').execCommand('insertHtml',con);
+    }
+</script>
+<script>
+    $.browser = {};
+    $.browser.mozilla = /firefox/.test(navigator.userAgent.toLowerCase());
+    $.browser.webkit = /webkit/.test(navigator.userAgent.toLowerCase());
+    $.browser.opera = /opera/.test(navigator.userAgent.toLowerCase());
+    $.browser.msie = /msie/.test(navigator.userAgent.toLowerCase()) || /trident/.test(navigator.userAgent.toLowerCase()) ;
+
+    if( $.browser.msie ) {
+        alert("百姓堂强烈建议下载360极速浏览器进行操作！");
+    }
+</script>
+
+<!--foot E-->
+<!--底部浮动隐藏 <div id="bottomToolbar">热门推荐：百姓堂</div>-->
+
+
+<script>
+    // 定义全局JS变量
+    var GV = {
+        current_controller: "wechat/{$controller|default=''}/",
+        base_url: "__STATIC__"
+    };
+</script>
+<script src="__JS__/layui/lay/dest/layui.all.js"></script>
+<script src="__JS__/index.js"></script>
+
+
+{block name="js"}{/block}
+{block name="script"}{/block}
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

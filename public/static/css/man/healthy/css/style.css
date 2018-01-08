@@ -1,0 +1,48 @@
+*{ 
+	margin:0px;
+	padding:0px; 
+	font-family:"微软雅黑";
+}
+img{ display: block; }
+p{ color: #666; font-size: 14px; }
+
+ .blank{ color:#3361a7; }
+ .brohui{ color:#c0c0c0; }
+ .red{ color:#dc3e07; }
+
+ .wxbtn{
+    width:100%; height:80px; margin:0 auto;  position: fixed; left:0; bottom:0;background: #f0f0f0;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 750px){
+
+}
+.wxbtn span{
+    display:inline-block;margin:auto;font-size: 14px;color:#fff;font-weight: 400;
+}
+
+.alert{
+    width:100%;height:100%;position:fixed;top:0;left:0;z-index: 9;display:none;
+}
+
+.showalert{
+    width:98%;max-width:400px;height:auto;margin:auto;background:#fff;border-radius:5px;box-shadow: 0 0 10px 1px #333;padding:0;position:relative;padding-top:30px;
+}
+
+.showalert .close{
+    width:30px;height:30px;text-align: center;line-height: 30px;border:1px #333 solid;display:block;float:right;border-radius:50%;font-size: 20px;cursor: pointer;position:absolute;
+    right:5px;top:5px;
+}
+.showalert .close:hover{
+    background:#333; color:#fff;
+}
+.showalert .wxh{
+    background:yellow;font-size: 25px;font-weight: 600;color:red;margin-bottom:10px;
+}
+.goWx{
+    padding:5px 10px;background:#096117;border-radius:5px;line-height: 20px;color:#fff;cursor: pointer;font-size: 16px;text-decoration: none;
+}
+.goWx:hover{
+    background:#008000;
+}

@@ -1,0 +1,377 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: -apple-system-font, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    font-size: 14px;
+}
+
+.cl {
+    clear: both;
+}
+
+.red {
+    color: #FF0000;
+    font-weight: 700;
+}
+#all {
+margin: 0 auto;
+max-width:750px;
+
+}
+.header {
+    padding: 10px 8px;
+    font-size: 18px;
+    font-weight: 600;
+
+}
+
+.nav {
+    font-size: 12px;
+    color: #999;
+    padding: 8px 6px;
+}
+
+.question {
+    border-top: 1px solid #E3E3E7;
+    border-bottom: 1px solid #E3E3E7;
+}
+
+.question .question-status {
+    float: left;
+    width: 4%;
+    background: #1FBAE6;
+    color: #fff;
+    font-size: 14px;
+    padding: 10px;
+}
+
+.question .question-info {
+    float: left;
+    margin-left: 10px;
+    width: 80%;
+}
+
+.question .question-info .question-title {
+    color: #FF0000;
+    margin-top: 10px;
+}
+
+.question .question-info .question-author {
+    color: #999;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.question-desc {
+    padding: 10px 8px;
+    border-bottom: 10px solid #E3E3E7;
+    line-height: 180%;
+}
+
+.answer .doc-answer-title {
+    padding: 10px 8px;
+    font-size: 16px;
+    font-weight: 600;
+    border-bottom: 1px solid #07B3E3;
+}
+
+.doc-answer .doc-icon {
+    float: left;
+    width: 60px;
+}
+
+.doc-answer .doc-info {
+    margin-top: 10px;
+}
+
+.doc-answer .doc-info .doc-icon img {
+    display: block;
+    margin: 0 auto;
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+}
+
+.doc-answer .doc-info .doc-desc {
+    float: left;
+    line-height: 20px;
+}
+
+.doc-answer .doc-info .doc-desc .doc-title {
+    font-size: 12px;
+    color: #888;
+}
+
+.doc-answer-content {
+    padding: 10px;
+    line-height: 180%;
+}
+
+.doc-like,
+.author-comment .author-comment-like {
+    color: #333;
+    padding: 10px;
+    border-top: 1px solid #E3E3E7;
+    border-bottom: 1px solid #E3E3E7;
+}
+
+.doc-answer-content img {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.author-comment .author-info {
+    font-size: 16px;
+    color: #02879f;
+    padding: 10px;
+    border-top: 1px dashed #000;
+    padding-bottom: 0px;
+}
+
+.author-comment .author-comment-content {
+    padding: 10px;
+    line-height: 180%;
+}
+
+.comment .title {
+    padding: 10px 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.comment ul {
+    list-style: none;
+}
+
+.comment .lz-msg .icon {
+    float: left;
+    width: 60px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.comment .lz-msg .icon img {
+    display: block;
+    margin: 0 auto;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.comment .lz-msg .lz-info {
+    line-height: 20px;
+}
+
+.comment ul li {
+    margin-top: 10px;
+}
+
+.comment .lz-msg .lz-info .lz-name {
+    color: #02879f;
+}
+
+.comment .lz-msg .lz-info .lz-level {
+    color: #888;
+    font-size: 12px;
+}
+
+.comment .lz-content {
+    padding: 10px;
+    border-bottom: 1px solid rgb(188, 192, 197);
+    line-height: 180%;
+}
+
+.comment .lz-content img {
+    display: block;
+    width: 100%;
+}
+
+.buchong {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #000;
+}
+
+.buchong .buchong-title {
+    font-weight: 600;
+}
+
+.buchong .buchong-content {
+    text-indent: 2em;
+}
+
+.recomment {
+    background: #f1f1f1;
+    padding: 5px 10px;
+    margin-top: 10px;
+}
+
+.recomment .recomment-name {
+    color: #02879F;
+    margin-top: 8px;
+    line-height: 150%;
+}
+
+.footer {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: #E3E3E7;
+}
+
+.touch-platform {
+    background: #07B3E3;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.touch-platform a {
+    display: block;
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 6px;
+    width: 70px;
+    margin: 0 auto;
+    text-align: center;
+    text-decoration: none;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+#gugao {
+	position: fixed;
+	width: 750px;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	background-color: red;
+	margin: 0 auto;
+
+}
+.closep{
+	position: absolute;
+	right:-18px;
+	top:-25px;
+	width: 25px;
+	height: 25px;
+	text-align: center;
+	line-height: 25px;
+	background-color: rgba(100,100,100,.2);
+	border-radius: 50%;
+	color: #000;
+}
+.gugao-title {
+	font-size: 25px;
+	background-color: #3385FF;
+	color: white;
+	font-family: "微软雅黑";
+	line-height: 50px;
+	text-align: center;
+}
+.gugao-nei {
+	background-color: white;
+	border: 1px solid #3385FF;
+}
+.gugao-nei p {
+	font-size: 27px;
+	font-family: "微软雅黑";
+	color: black;
+	text-align: center;
+}
+.gugao-nei strong {
+	font-family: "微软雅黑";
+	font-size: 30px;
+	color: red;
+	text-align: center;
+}
+.gugao-nei img {
+	display: block;
+	margin: 10px auto;
+}
+.bXianShi {
+	display: none;
+}
+.tjwx {
+	border-radius: 5px;
+	background-color: #05DA02;
+	width: 60%;
+	margin: 0 auto;
+	text-align: center;
+	padding: 5px 0;
+	box-shadow: 1px 1px 5px 2px rgba(0,0,0,0.5);
+}
+.tjwx span {
+	border-bottom: 1px solid black;
+}
+
+.footer-add {
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    z-index: 99999;
+}
+
+.footer-add .foot-box {
+    max-width: 670px;
+    background-color: #fff;
+    overflow: hidden;
+    margin: 0 auto;
+    border: 1px solid #999;
+}
+
+.footer-add .foot-box .foot-img {
+    max-width: 50px;
+    width: 20%;
+    float: left;
+}
+
+.footer-add .foot-box .foot-img img {
+    width: 100%;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.footer-add .foot-box .foot-txt {
+    padding-top: 5px;
+    width: 59%;
+    float: left;
+    text-align: center;
+}
+
+.footer-add .foot-box .foot-txt span {
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+.footer-add .foot-box .foot-txt span .weixin {
+    color: red;
+    background-color: yellow;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.footer-add .foot-box .add {
+    float: right;
+    padding-top: 10px;
+    padding-right: 5px;
+    line-height: 36px;
+}
+
+.footer-add .foot-box .add a {
+    color: #fff;
+    background-color: red;
+    padding: 8px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.beian{
+    text-align: center;
+    color: #666;
+}

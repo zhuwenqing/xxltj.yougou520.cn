@@ -1,0 +1,10 @@
+
+{foreach name="results" item="result"}
+
+<h3>{$result.title}</h3>
+{php}htmlspecialchars_decode($result['content']){/php}
+
+{/foreach}
+
+
+{/block}

@@ -1,0 +1,288 @@
+{extend name="base"}
+
+{block name="css"}
+<style>
+    .layui-input{
+        width:210px;
+    }
+    .show-user{
+        border:none;
+    }
+    .show-block{
+        display: none;
+    }
+    form{
+        margin:0 auto;
+    }
+
+</style>
+{/block}
+
+{block name="body"}
+<style>
+    .userCenter{
+        width:100%;max-width:800px;margin:50px auto;background:#fff;height:auto;box-shadow: 0 0 3px #555;
+    }
+    .userTop{
+        width:100%;height:60px;background:#d4d4d4;
+    }
+    .userTop a{
+        display:inline-block;width:50%;float:left;text-align:center;line-height: 60px;
+    }
+    .userTop a.action{
+        background:#fff;
+    }
+    .img_edit{
+        width:100%;height:30px;text-align:center;line-height:30px;color:#fff;background:rgba(0,0,0,0.5);
+        position: absolute;bottom:0;height:0px;transition: height 0.3s;overflow: hidden;cursor: pointer;
+    }
+    .userInfo{
+        width:100%;height:auto;
+    }
+    .userPic:hover .img_edit{
+        height:30px;
+    }
+    .userPic{
+        width:100px;height:100px;margin:25px auto;border-radius:50%;overflow: hidden;position: relative;
+    }
+    .userPic img{
+        margin:-2px;
+        min-height: 104px;
+    }
+    .userData{
+        wdith:100%;height:auto;text-align:center;
+    }
+    .userData ul{
+        width:600px;margin:0 auto;height:auto;list-style: none;
+    }
+    .userData ul li{
+        width:100%;height:40px;padding:10px 0;line-height: 40px;
+    }
+    .userData ul li input{
+        height:25px;width:400px;border-radius:5px;border:none;padding:2px 15px;box-shadow: 0 0 3px #d4d4d4;color:#999;
+    }
+    .radio{
+        float:left;wdith:380px;padding:0 10px;
+    }
+    .userData ul li input.action{
+        color:#000;box-shadow: 0 0 3px #333;
+    }
+    .userData ul li p{
+        display:inline-block; font-size:18px;color:#aaa;padding:0 15px;float:left;
+    }
+    .userData ul li b{
+        color:#fff;cursor: pointer;padding:0 10px;opacity: 0;transition: opacity 0.5s;
+    }
+    .userData ul li:hover b{
+        color:#889b4a;opacity: 1;font-weight: bold;
+    }
+
+</style>
+<div style="width: 100%;">
+    <div class="userCenter">
+        <div class="userTop">
+            <a style="color: #333;" class="action">信息资料</a>
+            <a style="color: #333;" href="{:url('home/user/patlas')}">美图相册</a>
+
+        </div>
+        <form class="layui-form form-container img_uoload" action="{:url('wechat/user/update')}" enctype="multipart/form-data" method="post">
+        <div class="userInfo">
+            <div class="userPic">
+                <div class="layui-form-item">
+                    <img id="headimage" src="{$um.header_path}" width="104"/>
+                    <div class="img_edit">修改</div>
+                    <input type="file" name="file" class="file_img layui-upload-file" style="display:none;"/>
+
+                </div>
+            </div>
+        </div>
+        </form>
+
+            <div class="userData">
+                <form class="layui-form form-container" action="{:url('wechat/user/update')}" enctype="multipart/form-data" method="post">
+                <ul>
+                        <li>
+                            <p style="text-indent: 2em;">昵称</p>
+                            <input type="text" name="nickname" value="{$um.nickname}"  autocomplete="off" readonly="readonly"/>
+                            <b name="nickname">修改</b>
+                        </li>
+                        <li>
+                            <p style="text-indent: 1em;">手机号</p>
+                            <input type="text" value="{$um.mobile}" name="mobile" readonly="readonly"/>
+                            <b name="mobile">修改</b>
+                        </li>
+                        <li>
+                            <p style="text-indent: 2em;">邮箱</p>
+                            <input type="text" value="{$um.email}" name="email" readonly="readonly"/>
+                            <b name="email">修改</b>
+                        </li>
+                        <li>
+                            <p style="text-indent: 2em;">Q Q</p>
+                            <input type="text" value="{$um.qq}" name="qq" readonly="readonly"/>
+                            <b name="qq">修改</b>
+                        </li>
+                        <li>
+                            <p style="text-indent: 1em;">微信号</p>
+                            <input type="text" value="{$um.wechat}" name="wechat" readonly="readonly"/>
+                            <b name="wechat">修改</b>
+                        </li>
+                        <li>
+                            <p style="text-indent: 2em;">性别</p>
+                            <!--<input type="text" value="{$um.sex}" name="sex" readonly="readonly"/>-->
+                            <!--<b name="wechat">修改</b>-->
+                            <!--<span class="layui-input show-user">{$um.sex}</span>-->
+                            <div class="radio sex_radio">
+                                <input type="radio" value="1" name="sex" title="保密" >
+                                <input type="radio" value="2" name="sex" title="男">
+                                <input type="radio" value="3" name="sex" title="女">
+                            </div>
+                        </li>
+                        <li>
+                            <p>出生日期</p>
+                            <input type="text" name="birthday" {if condition="$um['birthday'] eq true"} value='{$um.birthday|date="Y-m-d",###}' {else/} value='' {/if}  readonly="readonly">
+                            <b name="birthday">修改</b>
+                        </li>
+                        <li>
+                            <input type="hidden" value="{$um.header_path}" id="path" name="header_path"/>
+                            <button class="layui-btn show-block" type="submit" lay-submit lay-filter="*">确认修改</button>
+                            <!-- 确认修改 -->
+                        </li>
+                </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--<div>
+        <div>
+            <a href="#">信息资料</a>
+        </div>
+        <div>
+            <a href="{:url('home/user/patlas')}">美图相册</a>
+        </div>
+    </div>-->
+    <!--<div style="margin:0 auto ;width: 1200px;">
+        <form class="layui-form form-container" action="{:url('home/user/update')}" enctype="multipart/form-data" method="post">
+        <div class="layui-form-item">
+            <div class="layui-form-item">
+                <label class="layui-form-label">头像:</label>
+                    <img style="width:160px;height: 160px;" src="{$um.header_path}" id="headimage">
+                    <div class="show-block" style="padding-left: 7px;position: relative;top: 61px;">
+                    <input type="file" name="file" class="layui-upload-file" >
+                    <input type="hidden" value="{$um.header_path}" id="path" name="header_path"/>
+                    </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">昵称:</label>
+                <div class="layui-input-block">
+                    <span class="layui-input show-user">{$um.nickname}</span>
+                    <input type="text" name="nickname" value="{$um.nickname}" class="layui-input show-block" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">手机号:</label>
+                <div class="layui-input-block">
+                    <span class="layui-input show-user">{$um.mobile}</span>
+                    <input type="text" value="{$um.mobile}" name="mobile" class="layui-input show-block" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">邮箱:</label>
+                <div class="layui-input-block">
+                    <span class="layui-input show-user">{$um.email}</span>
+                    <input type="email" value="{$um.email}" name="email" class="layui-input show-block" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">QQ:</label>
+                <div class="layui-input-block">
+                    <span class="layui-input show-user">{$um.qq}</span>
+                    <input type="text" value="{$um.qq}" name="qq" class="layui-input show-block" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">微信号:</label>
+                <div class="layui-input-block">
+                    <span class="layui-input show-user">{$um.wechat}</span>
+                    <input type="text" value="{$um.wechat}" name="wechat" class="layui-input show-block" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">性别:</label>
+                <div class="layui-input-block">
+                    <span class="layui-input show-user">{$um.sex}</span>
+                    <div class="show-block">
+                    <input type="radio" value="1" name="sex" title="保密"checked>
+                    <input type="radio" value="2" name="sex" title="男">
+                    <input type="radio" value="3" name="sex" title="女">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">出生日期</label>
+                <div class="layui-input-block">
+                    <span class="layui-input show-user">{if condition="$um['birthday'] eq true"}{$um.birthday|date="Y-m-d",###}{else/}{/if}</span>
+                    <input type="text" name="birthday" {if condition="$um['birthday'] eq true"} value='{$um.birthday|date="Y-m-d",###}' {else/} value='' {/if} placeholder="1990-01-01" class="layui-input show-block">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+
+                    <button class="layui-btn update" onclick="update()" type="button">修改资料</button>
+                    <button class="layui-btn show-block" type="submit" lay-submit lay-filter="*">确认修改</button>
+
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>-->
+</div>
+
+{/block}
+
+{block name="script"}
+
+
+<script>
+    var edit = $('.userData ul li b');
+    edit.click(function(){
+        var name = $(this).attr('name');
+        $('.userData ul li input[name='+name+']').addClass('action');
+        $('.userData ul li input[name='+name+']').removeAttr('readonly');
+
+    });
+
+    var sex ="{$um.sex}";
+//    alert(sex);
+    if(sex === '男'){
+        $('.layui-form-radio').eq(1).click();
+    }else if(sex === '女'){
+        $('.layui-form-radio').eq(2).click();
+    }else{
+        $('.layui-form-radio').eq(0).click();
+    }
+    $('.userPic').mousemove(function(){
+
+    });
+    $('.img_edit').click(function(){
+        $('.file_img').click();
+    });
+//    $('.file_img').change(function(){
+//        var formData = new FormData($( ".file_img" )[0]);
+//        $.ajax({
+//            url:"{:url('wechat/user/update')}",
+//            data:formData,
+//            success:function(res){
+//                alert(res);
+//                console.log(res);
+//            }
+//        })
+//    });
+</script>
+{/block}
+
+{block name="css"}
+
+
+{/block}
+

@@ -1,0 +1,107 @@
+{extend name="base"}
+
+{block name="body"}
+<style>
+    .layui-input{
+        width:210px;
+    }
+    .show-user{
+        border:none;
+    }
+    .show-block{
+        display: none;
+    }
+    form{
+        margin:0 auto;
+    }
+
+</style>
+<div style="width: 50%;margin: 20px auto;">
+    <div style="margin:0 auto ;width: 1200px;">
+        <form class="layui-form form-container" action="{:url('wechat/user/update')}" enctype="multipart/form-data" method="post">
+            <div class="layui-form-item">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">头像:</label>
+                    <img style="width:160px;height: 160px;" src="{$um.header_path}" id="headimage">
+                    <div class="show-block" style="padding-left: 7px;position: relative;top: 61px;">
+                        <input type="file" name="file" class="layui-upload-file" >
+                        <input type="hidden" value="{$um.header_path}" id="path" name="header_path"/>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">昵称:</label>
+                    <div class="layui-input-block">
+                        <span class="layui-input show-user">{$um.nickname}</span>
+                        <input type="text" name="nickname" value="{$um.nickname}" class="layui-input show-block" />
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">手机号:</label>
+                    <div class="layui-input-block">
+                        <span class="layui-input show-user">{$um.mobile}</span>
+                        <input type="text" value="{$um.mobile}" name="mobile" class="layui-input show-block" />
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">邮箱:</label>
+                    <div class="layui-input-block">
+                        <span class="layui-input show-user">{$um.email}</span>
+                        <input type="email" value="{$um.email}" name="email" class="layui-input show-block" />
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">QQ:</label>
+                    <div class="layui-input-block">
+                        <span class="layui-input show-user">{$um.qq}</span>
+                        <input type="text" value="{$um.qq}" name="qq" class="layui-input show-block" />
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">微信号:</label>
+                    <div class="layui-input-block">
+                        <span class="layui-input show-user">{$um.wechat}</span>
+                        <input type="text" value="{$um.wechat}" name="wechat" class="layui-input show-block" />
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">性别:</label>
+                    <div class="layui-input-block">
+                        <span class="layui-input show-user">{$um.sex}</span>
+                        <div class="show-block">
+                            <input type="radio" value="1" name="sex" title="保密"checked>
+                            <input type="radio" value="2" name="sex" title="男">
+                            <input type="radio" value="3" name="sex" title="女">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">出生日期</label>
+                    <div class="layui-input-block">
+                        <span class="layui-input show-user">{if condition="$um['birthday'] eq true"}{$um.birthday|date="Y-m-d",###}{else/}{/if}</span>
+                        <input type="text" name="birthday" {if condition="$um['birthday'] eq true"} value='{$um.birthday|date="Y-m-d",###}' {else/} value='' {/if} placeholder="1990-01-01" class="layui-input show-block">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <!--<button class="layui-btn" type="submit">确认修改</button>-->
+                        <button style="width: 92px;left: 118px;" class="layui-btn update" onclick="update()" type="button">修改资料</button>
+                        <button class="layui-btn show-block" type="submit" lay-submit lay-filter="*">确认修改</button>
+                        <!--<button class="layui-btn show-block" type="submit">确认修改</button>-->
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('#upload').hide();
+    function update(){
+        $('.show-user').remove();
+        $('.show-block').css('display','inline-block');
+//        $('#upload').show();
+    }
+</script>
+
+{/block}
+

@@ -1,0 +1,69 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">域名防封检测</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+
+                <form class="layui-form form-container" id="check_url" method="post" style="margin:0 auto;">
+                    <div class="layui-form-item">
+                            <label class="layui-form-label">批量添加域名</label>
+                            <div class="layui-input-block">
+                                <textarea name="domain" placeholder="请输入域名(至少一个) 多个域名每行一个(Enter键换行)" class="layui-textarea"></textarea>
+                            </div>
+                        </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block" style="text-align:center;">
+                            <a class="layui-btn" onclick="getFormInfo();">检测</a>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-tab-item layui-show">
+        <table class="layui-table">
+            <thead>
+            <tr>
+                <th>域名</th>
+                <th>状态</th>
+            </tr>
+            </thead>
+            <tbody class="url_type">
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+{/block}
+{block name="script"}
+    <script type="text/javascript">      
+
+    function getFormInfo(){ 
+        $('.url_type > tr').remove();
+        var form = document.getElementById('check_url');  
+        var data = form.getElementsByTagName('textarea').domain.value;
+
+        $.ajax({
+            url:"{:url('admin/checkwxurl/check')}",
+            data:{domain:data},
+            success:function(res){
+                for(var i = 0;i < res.length;i++){
+                    $('.url_type').append("<tr><td>"+res[i].url+"</td><td>"+res[i].msg+"</td></tr>");
+                }
+            }
+        });
+        // console.log(form.getElementsByTagName('textarea').domain.value);
+        // alert(form);
+        // var params = serializeForm('check_url'); 
+        // alert(params); 
+    } 
+</script>
+{/block}

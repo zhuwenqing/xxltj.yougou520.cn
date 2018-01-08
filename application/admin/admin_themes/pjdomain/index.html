@@ -1,0 +1,80 @@
+{extend name="base" /}
+{block name="body"}
+<style>
+    .layui-form-checkbox {
+        height: 38px;
+        line-height: 37px;
+        margin: 0;
+    }
+    
+    .layui-form-pane .layui-form-checkbox {
+        margin: 0;
+    }
+</style>
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">域名管理</li>
+            <li class=""><a href="{:url('admin/pjdomain/add',array('id'=>$article_list[0]['pid']))}">添加域名</a></li>
+        </ul>
+        <div class="layui-tab-content">
+
+            <form class="layui-form layui-form-pane" action="{:url('admin/pjdomain/index',array('id'=>$article_list[0]['pid']))}" method="get">
+                <div class="layui-inline">
+                    <label class="layui-form-label">关键词</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="keyword" value="{$keyword}" placeholder="请输入关键词" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-inline" pane="">
+                    <div class="layui-input-block" style="margin-left:5px;">
+                        <input type="checkbox" name="status" value="on" lay-skin="primary" title="只看可使用域名" {if condition='$status == 1' }checked="" {/if}>
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <button class="layui-btn">搜索</button>
+                </div>
+            </form>
+            <hr>
+
+            <form action="" method="post" class="ajax-form">
+                <button type="button" class="layui-btn layui-btn-danger layui-btn-small ajax-action" data-action="{:url('admin/pjdomain/delete')}">删除</button>
+                <div class="layui-tab-item layui-show">
+                    <table class="layui-table">
+                        <thead>
+                        <tr>
+                            <th style="width: 15px;"><input type="checkbox" class="check-all"></th>
+                            <th style="width: 30px;">ID</th>
+                            <th>域名</th>
+                            <th>后缀</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {foreach name="article_list" item="vo"}
+                        <tr>
+                            <td><input type="checkbox" name="ids[]" value="{$vo.id}"></td>
+                            <td>{$vo.id}</td>
+                            <td>{$vo.domain}</td>
+                            <td>{$vo.postfix}</td>
+                            <td>{if condition="$vo.status eq 1"}可以使用{else}已封{/if}</td>
+                            <td>
+                                <!-- <a href="{:url('admin/pjdomain/edit',['id'=>$vo['id']])}" class="layui-btn layui-btn-normal layui-btn-mini">编辑</a> -->
+                                <a href="{:url('admin/pjdomain/delete',['id'=>$vo['id']])}" class="layui-btn layui-btn-danger layui-btn-mini ajax-delete">删除</a>
+                            </td>
+                        </tr>
+                        {/foreach}
+                        </tbody>
+                    </table>
+                    <!--分页-->
+                    {$article_list->render()}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{/block}

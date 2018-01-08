@@ -1,0 +1,24 @@
+<script src="__JS__/admin2.js"></script>
+<div style="display:flex;" class="wbx">
+    <div class="layui-form-item">
+        <label class="layui-form-label">添加微信号</label>
+        <div class="layui-input-block">
+            <input type="text" name="change_name" placeholder="请输入微信号" required  lay-verify="required" class="layui-input change_name">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">二维码</label>
+        <div class="layui-input-block">
+            <input type="text" name="qrcode_path" value="" class="layui-input layui-input-inline">
+            <input type="file" name="file" class="layui-upload-file">
+        </div>
+    </div>
+</div>
+
+
+<div class="layui-box layui-upload-button">
+    <form target="layui-upload-iframe" method="post" key="set-mine" enctype="multipart/form-data" action="/api/upload/upload">
+        <input type="file" name="file" class="layui-upload-file">
+    </form>
+    <span class="layui-upload-icon"><i class="layui-icon"></i>上传图片</span>
+</div>
